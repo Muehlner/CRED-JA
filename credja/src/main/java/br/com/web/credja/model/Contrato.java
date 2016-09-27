@@ -3,6 +3,7 @@ package br.com.web.credja.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Contrato implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private StatusContrato status;
 
 }
