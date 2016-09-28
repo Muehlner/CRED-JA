@@ -23,6 +23,9 @@ public class Banco implements Serializable {
 	@OneToMany(mappedBy = "banco")
 	private List<Tabela> tabelas;
 
+	@OneToMany(mappedBy = "banco")
+	private List<Contrato> contrato;
+
 	public Integer getId() {
 		return id;
 	}
@@ -45,5 +48,13 @@ public class Banco implements Serializable {
 
 	public void setTabelas(List<Tabela> tabelas) {
 		this.tabelas = tabelas;
+	}
+
+	public List<Contrato> getContrato() {
+		return contrato;
+	}
+
+	public void setContrato(List<Contrato> contrato) {
+		this.contrato = contrato;
 	}
 }

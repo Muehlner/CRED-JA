@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import br.com.web.credja.enums.StatusContrato;
 
@@ -23,6 +22,22 @@ public class Contrato implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	private Integer numero;
+
+	private Integer dataCadastro;
+
+	private Integer parcelasPagas;
+
+	private Integer parcelasTotais;
+
+	private BigDecimal valorParcela;
+
+	private BigDecimal saldoDevedor;
+
+	@ManyToOne
+	@JoinColumn(name = "banco_id")
+	private Banco banco;
 
 	private BigDecimal valorRefinanciamento;
 
@@ -44,7 +59,63 @@ public class Contrato implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public Integer getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Integer dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public Integer getParcelasPagas() {
+		return parcelasPagas;
+	}
+
+	public void setParcelasPagas(Integer parcelasPagas) {
+		this.parcelasPagas = parcelasPagas;
+	}
+
+	public Integer getParcelasTotais() {
+		return parcelasTotais;
+	}
+
+	public void setParcelasTotais(Integer parcelasTotais) {
+		this.parcelasTotais = parcelasTotais;
+	}
+
+	public BigDecimal getValorParcela() {
+		return valorParcela;
+	}
+
+	public void setValorParcela(BigDecimal valorParcela) {
+		this.valorParcela = valorParcela;
+	}
+
+	public BigDecimal getSaldoDevedor() {
+		return saldoDevedor;
+	}
+
+	public void setSaldoDevedor(BigDecimal saldoDevedor) {
+		this.saldoDevedor = saldoDevedor;
+	}
+
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+
 	public BigDecimal getValorRefinanciamento() {
 		return valorRefinanciamento;
 	}

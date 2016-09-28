@@ -2,7 +2,7 @@ package br.com.web.credja.enums;
 
 public enum StatusContrato {
 
-	PAGO(1, "Pago"), ANALISE(2, "Em analise"), CANCELADO(3, "Cancelado");
+	PAGO(1, "Pago"), ANALISE(2, "Em analise"), NEGOCIACAO(3, "Em negociação"), CANCELADO(4, "Cancelado");
 
 	Integer index;
 
