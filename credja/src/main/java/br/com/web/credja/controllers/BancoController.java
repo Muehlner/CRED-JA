@@ -19,7 +19,7 @@ public class BancoController {
 	@Autowired
 	private BancoDao bancoDao;
 
-	@RequestMapping("")
+	@RequestMapping(value = "")
 	public String page() {
 		return "cadastros/banco/cadastro";
 	}
@@ -27,30 +27,30 @@ public class BancoController {
 	@RequestMapping(value = "/cadastra", method = RequestMethod.POST)
 	public String cadastro(Banco banco) {
 		bancoDao.cadastrar(banco);
-		return "cadastros/banco/banco-adicionado";
+		return "redirect:lista";
 	}
 
-	@RequestMapping("/lista")
+	@RequestMapping(value = "/lista")
 	public String lista(Model model) {
 		model.addAttribute("bancos", bancoDao.lista());
 		return "consultas/banco/lista";
 	}
 
-	@RequestMapping("mostra")
+	@RequestMapping(value = "mostra")
 	public String mostra(Integer id, Model model) {
 		model.addAttribute("banco", bancoDao.buscaPorId(id));
-		return "consultas/banco/mostra";
+		return "alteracoes/banco/mostra";
 	}
 
-	@RequestMapping("altera")
+	@RequestMapping(value = "altera")
 	public String altera(Banco banco) {
 		bancoDao.altera(banco);
-		return "redirect:listaBancos";
+		return "redirect:lista";
 	}
 
-	@RequestMapping("remove")
+	@RequestMapping(value = "remove")
 	public String remove(Banco banco) {
 		bancoDao.remove(banco);
-		return "redirect:listaBancos";
+		return "redirect:lista";
 	}
 }

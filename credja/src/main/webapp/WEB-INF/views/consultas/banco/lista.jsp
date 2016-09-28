@@ -12,7 +12,7 @@
 	
 		<h3>Lista de Bancos</h3>
 	
-		<a href="banco">Criar novo Banco</a>
+		<a href="/banco">Criar novo Banco</a>
 			
 		<table>
 		  	<tr>
@@ -23,8 +23,8 @@
 		    	<tr>
 		      		<td>${banco.id}</td>
 		      		<td>${banco.descricao}</td>
-		      		<td><a href="mostraBanco?id=${banco.id}">Alterar</a></td>
-		      		<td><a href="removeBanco?id=${banco.id}">Remover</a></td>
+		      		<td><a href="mostra?id=${banco.id}">Alterar</a></td>
+		      		<td><a href="remove?id=${banco.id}">Remover</a></td>
 		    	</tr>
 			 </c:forEach>
 	  	</table>
