@@ -36,8 +36,6 @@ public class TabelaController {
 	@RequestMapping("/cadastra")
 	public String cadastro(TabelaDTO tabelaDTO) {
 
-		tabelaDTO.setIdBanco(1);
-		
 		Banco banco = bancoDao.buscaPorId(tabelaDTO.getIdBanco());
 		
 		Tabela tabela = new Tabela(); 
