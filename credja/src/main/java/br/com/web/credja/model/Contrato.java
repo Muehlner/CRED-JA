@@ -35,10 +35,6 @@ public class Contrato implements Serializable {
 
 	private BigDecimal saldoDevedor;
 
-	@ManyToOne
-	@JoinColumn(name = "banco_id")
-	private Banco banco;
-
 	private BigDecimal valorRefinanciamento;
 
 	private BigDecimal valorCompra;
@@ -106,14 +102,6 @@ public class Contrato implements Serializable {
 
 	public void setSaldoDevedor(BigDecimal saldoDevedor) {
 		this.saldoDevedor = saldoDevedor;
-	}
-
-	public Banco getBanco() {
-		return banco;
-	}
-
-	public void setBanco(Banco banco) {
-		this.banco = banco;
 	}
 
 	public BigDecimal getValorRefinanciamento() {

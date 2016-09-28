@@ -24,7 +24,7 @@ public class Banco implements Serializable {
 	private List<Tabela> tabelas;
 
 	@OneToMany(mappedBy = "banco")
-	private List<Contrato> contrato;
+	private List<Cliente> clientes;
 
 	public Integer getId() {
 		return id;
@@ -50,11 +50,11 @@ public class Banco implements Serializable {
 		this.tabelas = tabelas;
 	}
 
-	public List<Contrato> getContrato() {
-		return contrato;
+	public List<Cliente> getClientes() {
+		return clientes;
 	}
 
-	public void setContrato(List<Contrato> contrato) {
-		this.contrato = contrato;
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 }

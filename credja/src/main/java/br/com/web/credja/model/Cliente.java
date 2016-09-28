@@ -42,6 +42,10 @@ public class Cliente implements Serializable {
 	private List<Contrato> contratos;
 
 	@ManyToOne
+	@JoinColumn(name = "banco_id")
+	private Banco banco;
+	
+	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
