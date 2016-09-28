@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.web.credja.dao.BancoDao;
 import br.com.web.credja.model.Banco;
@@ -18,12 +19,12 @@ public class BancoController {
 	@Autowired
 	private BancoDao bancoDao;
 
-	@RequestMapping("/banco")
+	@RequestMapping("")
 	public String page() {
 		return "cadastros/banco/cadastro";
 	}
 
-	@RequestMapping("/cadastra")
+	@RequestMapping(value = "/cadastra", method = RequestMethod.POST)
 	public String cadastro(Banco banco) {
 		bancoDao.cadastrar(banco);
 		return "cadastros/banco/banco-adicionado";

@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.web.credja.dao.BancoDao;
 import br.com.web.credja.dao.TabelaDao;
+import br.com.web.credja.dto.TabelaDTO;
 import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Tabela;
 
 @Controller
 @Transactional
-@RequestMapping(value = { "tarefa" })
+@RequestMapping(value = { "tabela" })
 public class TabelaController {
 
 	@Autowired
@@ -33,11 +34,22 @@ public class TabelaController {
 	}
 
 	@RequestMapping("/cadastra")
-	public String cadastro(Tabela tabela) {
+	public String cadastro(TabelaDTO tabelaDTO) {
 
+		tabelaDTO.setIdBanco(1);
+		
+		Banco banco = bancoDao.buscaPorId(tabelaDTO.getIdBanco());
+		
+		Tabela tabela = new Tabela(); 
+		tabela.setDescricao(tabelaDTO.getDescricao());
+		
+		tabela.setBanco(banco);
 		tabelaDao.cadastrar(tabela);
-
-		return "cadastros/tarefa/tarefa-adicionado";
+		
+		banco.getTabelas().add(tabela);
+		bancoDao.altera(banco);
+		
+		return "cadastros/tabela/tabela-adicionado";
 	}
 
 	@ModelAttribute("bancos")

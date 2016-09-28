@@ -10,7 +10,7 @@
 	<body>
 		<h3>Cadastro de Banco</h3>
 	
-		<form action="/cadastraBanco" method="post">
+		<form action="banco/cadastra" method="post">
 			
 			<input type="text" name="descricao" />
 			
