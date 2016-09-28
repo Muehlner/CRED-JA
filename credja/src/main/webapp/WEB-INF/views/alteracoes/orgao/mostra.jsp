@@ -10,7 +10,7 @@
 
 <h3>Alterar Orgão - ${orgao.id}</h3>
   
-  <form action="alteraOrgao" method="post">
+  <form action="altera" method="post">
 
     <input type="hidden" name="id" value="${orgao.id}" />
   

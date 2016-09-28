@@ -12,7 +12,7 @@
 	
 		<h3>Lista de Orgãos</h3>
 	
-		<a href="orgao">Criar novo Orgão</a>
+		<a href="/orgao">Criar novo Orgão</a>
 			
 		<table>
 		  	<tr>
@@ -23,8 +23,8 @@
 		    	<tr>
 		      		<td>${orgao.id}</td>
 		      		<td>${orgao.descricao}</td>
-		      		<td><a href="mostraOrgao?id=${orgao.id}">Alterar</a></td>
-		      		<td><a href="removeOrgao?id=${orgao.id}">Remover</a></td>
+		      		<td><a href="mostra?id=${orgao.id}">Alterar</a></td>
+		      		<td><a href="remove?id=${orgao.id}">Remover</a></td>
 		    	</tr>
 			 </c:forEach>
 	  	</table>

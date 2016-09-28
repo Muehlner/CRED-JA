@@ -10,7 +10,7 @@
 	<body>
 		<h3>Cadastro de Orgão</h3>
 	
-		<form action="/cadastro" method="post">
+		<form action="orgao/cadastro" method="post">
 			
 			<input type="text" name="descricao" />
 			

@@ -24,13 +24,13 @@ public class BancoController {
 		return "cadastros/banco/cadastro";
 	}
 
-	@RequestMapping(value = "/cadastra", method = RequestMethod.POST)
+	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
 	public String cadastro(Banco banco) {
 		bancoDao.cadastrar(banco);
 		return "redirect:lista";
 	}
 
-	@RequestMapping(value = "/lista")
+	@RequestMapping(value = "lista")
 	public String lista(Model model) {
 		model.addAttribute("bancos", bancoDao.lista());
 		return "consultas/banco/lista";

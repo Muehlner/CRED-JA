@@ -23,13 +23,13 @@ public class OrgaoController {
 		return "cadastros/orgao/cadastro";
 	}
 
-	@RequestMapping("/cadastro")
+	@RequestMapping("cadastro")
 	public String cadastro(Orgao orgao) {
 		orgaoDao.cadastrar(orgao);
-		return "cadastros/orgao/orgao-adicionado";
+		return "redirect:lista";
 	}
 	
-	@RequestMapping("/lista")
+	@RequestMapping("lista")
 	public String lista(Model model) {
 	  model.addAttribute("orgaos", orgaoDao.lista());
 	  return "consultas/orgao/lista";
@@ -38,18 +38,18 @@ public class OrgaoController {
 	@RequestMapping("mostra")
 	public String mostra(Integer id, Model model) {
 	  model.addAttribute("orgao", orgaoDao.buscaPorId(id));
-	  return "consultas/orgao/mostra";
+	  return "alteracoes/orgao/mostra";
 	}
 	
 	@RequestMapping("altera")
 	public String altera(Orgao orgao) {
 	  orgaoDao.altera(orgao);
-	  return "redirect:listaOrgaos";
+	  return "redirect:lista";
 	}
 	
 	@RequestMapping("remove")
 	public String remove(Orgao orgao) {
 	  orgaoDao.remove(orgao);
-	  return "redirect:listaOrgaos";
+	  return "redirect:lista";
 	}
 }
