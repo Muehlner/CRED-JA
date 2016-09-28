@@ -1,8 +1,6 @@
 package br.com.web.credja.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -51,15 +49,7 @@ public class TabelaController {
 	}
 
 	@ModelAttribute("bancos")
-	public Map<Integer, String> buscaBancos() {
-		HashMap<Integer, String> bancos = new HashMap<>();
-
-		List<Banco> bancosEncontrados = bancoDao.lista();
-
-		for (Banco banco : bancosEncontrados) {
-			bancos.put(banco.getId(), banco.getDescricao());
-		}
-
-		return bancos;
+	public List<Banco> buscaBancos() {
+		return bancoDao.lista();
 	}
 }

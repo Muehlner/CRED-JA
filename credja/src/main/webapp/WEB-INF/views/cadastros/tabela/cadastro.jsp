@@ -13,9 +13,9 @@
 	<form action="tabela/cadastra">
 
 		<label>Banco:</label>
-		<form:select path="bancos">
+		<form:select path="bancos" name="idBanco">
 			<form:option value="Selecione" label="Selecione..." />
-			<form:options items="${bancos}" />
+			<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
 		</form:select>
 
 		Descrição da tabela:  <input type="text" name="descricao" /> 
@@ -23,5 +23,6 @@
 		<input type="submit" value="Gravar" />
 
 	</form>
+
 </body>
 </html>
