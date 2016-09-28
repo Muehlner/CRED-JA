@@ -7,32 +7,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="resources/js/jquery.js"></script>
 <title>Insert title here</title>
 </head>
 	<body>
 	
 		<h3>Lista de Tabelas</h3>
 	
-		<a href="/banco">Criar nova Tabela</a>
+		<a href="/tabela">Criar nova Tabela</a>
 		
-		<form:select path="bancos" name="idBanco">
+		<form:select path="bancos" name="idBanco" id="idBanco">
 			<form:option value="Selecione" label="Selecione..." />
 			<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
 		</form:select>
-			
-		<table>
-		  	<tr>
-		    	<th>Descrição</th>
-		    	<th>Banco</th>
-		  	</tr>
-		  	<c:forEach items="${tabelas}" var="tabela">
-		    	<tr>	
-		      		<td>${tabela.descricao}</td>
-		      		<td></td>
-		      		<td><a href="mostra?id=${tabela.id}">Alterar</a></td>
-		      		<td><a href="remove?id=${tabela.id}">Remover</a></td>
-		    	</tr>
-			 </c:forEach>
-	  	</table>
+		
+		<input type="submit" value="Pesquisar" onClick="pesquisaTabelas(${idBanco})"/>
+		
 	</body>
+	
+	<script type="text/javascript">
+		  function pesquisaTabelas(id) {
+		    $.get("tabela/lista", {'id' : id}, function(resposta) {
+		      $("#tabela").html(resposta);
+		    });
+		  }
+	</script>
+	
 </html>

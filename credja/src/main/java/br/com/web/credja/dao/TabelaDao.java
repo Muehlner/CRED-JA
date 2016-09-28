@@ -29,8 +29,9 @@ public class TabelaDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Tabela> lista() {		
-		List<Tabela> tabelas = manager.createQuery("select t from Tabela t").getResultList();
+	public List<Tabela> buscaPorIdBanco(Integer idBanco) {
+		List<Tabela> tabelas = manager.createQuery("select t from Tabela t where t.idBanco :idBanco")
+				.setParameter("idBanco", idBanco).getResultList();
 		return tabelas;
 	}
 

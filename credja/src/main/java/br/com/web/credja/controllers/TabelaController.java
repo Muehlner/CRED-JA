@@ -6,9 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.web.credja.dao.BancoDao;
@@ -22,6 +22,7 @@ import br.com.web.credja.model.Tabela;
 @RequestMapping(value = { "tabela" })
 public class TabelaController {
 
+	private static final String PAGINA_TABELA = "consultas/tabela/tabela";
 	private static final String PAGINA_LISTA_TABELA = "consultas/tabela/lista";
 
 	@Autowired
@@ -54,11 +55,20 @@ public class TabelaController {
 
 	@RequestMapping(value = "lista")
 	public ModelAndView lista() {
-		
+
 		ModelAndView modelAndView = new ModelAndView(PAGINA_LISTA_TABELA);
 
-		modelAndView.addObject("tabelas", tabelaDao.lista());
-		
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "pesquisaTabelas")
+	@ResponseBody
+	public ModelAndView pesquisaTabelas(Integer idBanco) {
+
+		ModelAndView modelAndView = new ModelAndView(PAGINA_TABELA);
+
+		modelAndView.addObject("tabelas", tabelaDao.buscaPorIdBanco(idBanco));
+
 		return modelAndView;
 	}
 
