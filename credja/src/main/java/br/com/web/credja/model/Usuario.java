@@ -33,21 +33,21 @@ public class Usuario implements Serializable {
 
 	private String nome;
 
-	@CPF
+	//@CPF
 	private String cpf;
 
-	@Email
+	//@Email
 	private String email;
 
 	private String telefone;
 
-	@NotNull
-	@NotBlank
-	@Column(unique = true)
+	//@NotNull
+	//@NotBlank
+	//@Column(unique = true)
 	private String login;
 
-	@NotNull
-	@NotBlank
+	//@NotNull
+	//@NotBlank
 	private String senha;
 
 	@Enumerated(EnumType.STRING)

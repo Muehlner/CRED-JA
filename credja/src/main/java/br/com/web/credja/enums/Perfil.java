@@ -8,6 +8,10 @@ public enum Perfil {
 
 	String descricao;
 
+	Perfil() {
+
+	}
+	
 	Perfil(Integer index, String descricao) {
 		this.index = index;
 		this.descricao = descricao;
