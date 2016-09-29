@@ -25,6 +25,9 @@ public class UsuarioController {
 	@RequestMapping(value = "")
 	public ModelAndView page() {
 		ModelAndView modelAndView = new ModelAndView(PAGINA_CADASTRO_USUARIO);
+		
+		modelAndView.addObject("");
+		
 		return modelAndView;
 	}
 
