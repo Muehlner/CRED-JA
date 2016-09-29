@@ -33,7 +33,10 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
-	public String cadastro(Usuario usuario) {
+	public String cadastro(Usuario usuario, String perfilUser) {
+		
+		usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
+		
 		usuarioDao.cadastrar(usuario);
 		return "redirect:lista";
 	}

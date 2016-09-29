@@ -33,7 +33,7 @@
 			
 			
 			Perfil:
-			<form:select path="perfis" name="perfil">
+			<form:select path="perfis" name="perfilUser">
 				<form:option value="Selecione" label="Selecione..." />
 				<form:options items="${perfis}" itemValue="descricao" itemLabel="descricao" />
 			</form:select>
