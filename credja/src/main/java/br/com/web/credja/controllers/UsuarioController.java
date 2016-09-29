@@ -47,4 +47,11 @@ public class UsuarioController {
 		modelAndView.addObject("usuarios", usuarioDao.lista());
 		return modelAndView;
 	}
+	
+
+	@RequestMapping(value = "remove")
+	public String remove(Usuario usuario) {
+		usuarioDao.remove(usuario);
+		return "redirect:lista";
+	}
 }

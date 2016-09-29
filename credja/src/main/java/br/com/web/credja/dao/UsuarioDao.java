@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Usuario;
 
 @Repository
@@ -21,9 +22,12 @@ public class UsuarioDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Usuario> lista() {
-		
 		List<Usuario> usuarios = manager.createNamedQuery("Usuario.findAll").getResultList();
-
 		return usuarios;
+	}
+	
+	public void remove(Usuario usuario) {
+		Usuario usuarioEncontrado = manager.find(Usuario.class, usuario.getId());
+		manager.remove(usuarioEncontrado);
 	}
 }
