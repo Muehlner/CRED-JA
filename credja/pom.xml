@@ -80,7 +80,7 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Spring security -->
+		<!-- Spring security 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -103,7 +103,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>4.0.0.M2</version>
-		</dependency>
+		</dependency>-->
 		
 	</dependencies>
 	<repositories>
