@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Usuario;
 
 @Repository
@@ -29,5 +28,13 @@ public class UsuarioDao {
 	public void remove(Usuario usuario) {
 		Usuario usuarioEncontrado = manager.find(Usuario.class, usuario.getId());
 		manager.remove(usuarioEncontrado);
+	}
+	
+	public Usuario buscaPorId(Integer id) {
+		return manager.find(Usuario.class, id);
+	}
+	
+	public void altera(Usuario usuario) {
+		manager.merge(usuario);
 	}
 }

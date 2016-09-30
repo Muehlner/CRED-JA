@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.web.credja.dao.UsuarioDao;
 import br.com.web.credja.enums.Perfil;
+import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Usuario;
 
 @Controller
@@ -19,6 +20,7 @@ public class UsuarioController {
 
 	private static final String PAGINA_CADASTRO_USUARIO = "cadastros/usuario/cadastro";
 	private static final String PAGINA_LISTA_USUARIO = "consultas/usuario/lista";
+	private static final String PAGINA_ALTERACAO_USUARIO = "alteracoes/usuario/mostra";
 	
 	@Autowired
 	private UsuarioDao usuarioDao;
@@ -54,4 +56,18 @@ public class UsuarioController {
 		usuarioDao.remove(usuario);
 		return "redirect:lista";
 	}
+	
+	@RequestMapping(value = "mostra")
+	public ModelAndView mostra(Integer id) {
+		ModelAndView modelAndView = new ModelAndView(PAGINA_ALTERACAO_USUARIO);
+		modelAndView.addObject("usuario", usuarioDao.buscaPorId(id));
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "altera")
+	public String altera(Usuario usuario) {
+		usuarioDao.altera(usuario);
+		return "redirect:lista";
+	}
+
 }
