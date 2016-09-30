@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +24,6 @@ import br.com.web.credja.model.Tabela;
 @RequestMapping(value = { "tabela" })
 public class TabelaController {
 
-	private static final String PAGINA_TABELA = "consultas/tabela/tabela";
 	private static final String PAGINA_LISTA_TABELA = "consultas/tabela/lista";
 
 	@Autowired
@@ -80,15 +80,10 @@ public class TabelaController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "pesquisaTabelas")
+	@RequestMapping(value = "pesquisaTabelas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ModelAndView pesquisaTabelas(Integer idBanco) {
-
-		ModelAndView modelAndView = new ModelAndView(PAGINA_TABELA);
-
-		modelAndView.addObject("tabelas", tabelaDao.buscaPorIdBanco(idBanco));
-
-		return modelAndView;
+	public List<Tabela> pesquisaTabelas(Integer idBanco) {
+		return tabelaDao.buscaPorIdBanco(idBanco);
 	}
 
 	@ModelAttribute("bancos")

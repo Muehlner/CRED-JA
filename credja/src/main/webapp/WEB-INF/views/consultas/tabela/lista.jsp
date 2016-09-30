@@ -17,31 +17,52 @@
 
 	<a href="/tabela">Criar nova Tabela</a> <br /><br />
 
-	<form:select path="bancos" name="idBanco" id="selectBanco">
+	<form:select path="bancos" name="idBanco" class="selectBanco" >
 		<form:option value="Selecione" label="Selecione..." />
 		<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
 	</form:select>
 
-	<input type="submit" value="Pesquisar" onClick="pesquisaTabelas()" />
+	<input type="submit" value="Pesquisar" class="pesquisar" />
+	
+	<table id="tabela" class="isHiden">
+	
+	</table>
 
 </body>
 
 <script type="text/javascript">
 
-	function pesquisaTabelas() {
-		
-		alert("aqui");
-		
-		/*
-		
-		$("#selectBanco").change(function() {
-			var id = $(this).children(":selected").attr("id");
-			alert(id);
-		});
-		
-		*/
+	var idBanco;
 
-	}
+	$('.selectBanco').on('change', function(){
+		idBanco = $(this).val();
+	})
+	
+	$('.pesquisar').on('submit', function(){
+		$.ajax({
+		  url: "tabela/pesquisaTabelas",
+		  contentType: "application/json",
+		  cache: "false", 
+		  data: JSON.stringify(idBanco),
+	}).sucess(function(response) {
+		 
+		$('#tabela').removeClass('isHidden');
+
+			$.each(response.data, function(element, i){
+
+				$('#tabela').append('<tr><td>element.descricao</td></tr>')
+
+				});
+
+			});
+	})
+
+</script>
+
+<script type="text/css">
+.isHiden{
+	display: none
+}
 </script>
 
 </html>
