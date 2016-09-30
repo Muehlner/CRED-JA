@@ -7,7 +7,7 @@
 <html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<script src="/webjars/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery-3.1.1.js"></script>
   	
   	<title>Insert title here</title>
 </head>
@@ -27,11 +27,19 @@
 </body>
 
 <script type="text/javascript">
+
 	function pesquisaTabelas() {
+		
+		alert("aqui");
+		
+		/*
+		
 		$("#selectBanco").change(function() {
 			var id = $(this).children(":selected").attr("id");
 			alert(id);
 		});
+		
+		*/
 
 	}
 </script>

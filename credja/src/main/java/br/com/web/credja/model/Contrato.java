@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import br.com.web.credja.enums.StatusContrato;
 
@@ -47,6 +48,9 @@ public class Contrato implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private StatusContrato status;
+
+	@OneToOne
+	private Orgao orgao;
 
 	public Integer getId() {
 		return id;
@@ -144,6 +148,14 @@ public class Contrato implements Serializable {
 		this.status = status;
 	}
 
+	public Orgao getOrgao() {
+		return orgao;
+	}
+
+	public void setOrgao(Orgao orgao) {
+		this.orgao = orgao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -153,6 +165,7 @@ public class Contrato implements Serializable {
 		result = prime * result + ((dataCadastro == null) ? 0 : dataCadastro.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((orgao == null) ? 0 : orgao.hashCode());
 		result = prime * result + ((parcelasPagas == null) ? 0 : parcelasPagas.hashCode());
 		result = prime * result + ((parcelasTotais == null) ? 0 : parcelasTotais.hashCode());
 		result = prime * result + ((saldoDevedor == null) ? 0 : saldoDevedor.hashCode());
@@ -196,6 +209,11 @@ public class Contrato implements Serializable {
 			if (other.numero != null)
 				return false;
 		} else if (!numero.equals(other.numero))
+			return false;
+		if (orgao == null) {
+			if (other.orgao != null)
+				return false;
+		} else if (!orgao.equals(other.orgao))
 			return false;
 		if (parcelasPagas == null) {
 			if (other.parcelasPagas != null)
