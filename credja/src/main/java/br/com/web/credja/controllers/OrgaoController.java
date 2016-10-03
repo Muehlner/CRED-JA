@@ -1,55 +1,57 @@
 package br.com.web.credja.controllers;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import br.com.web.credja.dao.OrdaoDao;
 import br.com.web.credja.model.Orgao;
+import br.com.web.credja.service.OrgaoService;
 
 @Controller
 @Transactional
-@RequestMapping( value = "orgao")
-public class OrgaoController {
+@RequestMapping(value = "orgao")
+public class OrgaoController extends AbstractController {
 
-	@Autowired
-	private OrdaoDao orgaoDao;
+	private static final String PAGINA_CADASTRO_ORGAO = "cadastros/orgao/cadastro";
+	private static final String PAGINA_LISTA_ORGAO = "consultas/orgao/lista";
+	private static final String PAGINA_ALTERACAO_ORGAO = "alteracoes/orgao/mostra";
 
-	@RequestMapping("")
-	public String page() {
-		return "cadastros/orgao/cadastro";
+	@Resource
+	private OrgaoService orgaoService;
+
+	@RequestMapping(value = "")
+	public ModelAndView page() {
+		return this.modelAndView(PAGINA_CADASTRO_ORGAO);
 	}
 
-	@RequestMapping("cadastro")
-	public String cadastro(Orgao orgao) {
-		orgaoDao.cadastrar(orgao);
-		return "redirect:lista";
+	@RequestMapping(value = "cadastro")
+	public ModelAndView cadastro(Orgao orgao) {
+		orgaoService.cadastro(orgao);
+		return this.redirect("lista");
 	}
-	
-	@RequestMapping("lista")
-	public String lista(Model model) {
-	  model.addAttribute("orgaos", orgaoDao.lista());
-	  return "consultas/orgao/lista";
+
+	@RequestMapping(value = "lista")
+	public ModelAndView lista() {
+		return this.modelAndView(PAGINA_LISTA_ORGAO).addObject("orgaos", orgaoService.lista());
 	}
-	
-	@RequestMapping("mostra")
-	public String mostra(Integer id, Model model) {
-	  model.addAttribute("orgao", orgaoDao.buscaPorId(id));
-	  return "alteracoes/orgao/mostra";
+
+	@RequestMapping(value = "mostra")
+	public ModelAndView mostra(Integer id) {
+		return this.modelAndView(PAGINA_ALTERACAO_ORGAO).addObject("orgao", orgaoService.buscaPorId(id));
 	}
-	
-	@RequestMapping("altera")
-	public String altera(Orgao orgao) {
-	  orgaoDao.altera(orgao);
-	  return "redirect:lista";
+
+	@RequestMapping(value = "altera")
+	public ModelAndView altera(Orgao orgao) {
+		orgaoService.altera(orgao);
+		return this.redirect("lista");
 	}
-	
-	@RequestMapping("remove")
-	public String remove(Orgao orgao) {
-	  orgaoDao.remove(orgao);
-	  return "redirect:lista";
+
+	@RequestMapping(value = "remove")
+	public ModelAndView remove(Orgao orgao) {
+		orgaoService.remove(orgao);
+		return this.redirect("lista");
 	}
 }
