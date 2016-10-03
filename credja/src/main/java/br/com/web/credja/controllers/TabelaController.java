@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -81,7 +80,7 @@ public class TabelaController extends AbstractController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Tabela> pesquisaTabelas(Integer idBanco) {
 		return tabelaDao.buscaPorIdBanco(idBanco);

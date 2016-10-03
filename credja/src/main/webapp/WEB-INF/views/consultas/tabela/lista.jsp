@@ -43,9 +43,16 @@
 		 $.ajax({
              url: '/tabela/pesquisaTabelas?idBanco=' + idBanco,
              type: 'GET',
+             dataType: 'json',
              cache: false
          })
-	});
+	}).success(function (response) {                       
+		$.each(response.data, function(element, i){
+
+			alert(element.descricao);
+
+		});
+    });
 	
 
 </script>
