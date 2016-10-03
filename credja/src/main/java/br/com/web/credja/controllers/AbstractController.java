@@ -13,6 +13,7 @@ public abstract class AbstractController {
 	}
 
     protected ModelAndView redirect(String url) {    	
+    	
         ModelAndView modelAndView = new ModelAndView(new RedirectView(url));
         
 		return modelAndView;
