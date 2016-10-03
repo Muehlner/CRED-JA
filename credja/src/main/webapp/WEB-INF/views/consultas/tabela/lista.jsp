@@ -22,7 +22,7 @@
 		<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
 	</form:select>
 
-	<input type="submit" value="Pesquisar" class="pesquisar" />
+	<input type="button" value="Pesquisar" class="pesquisar" />
 	
 	<table id="tabela" class="isHiden">
 	
@@ -36,33 +36,18 @@
 
 	$('.selectBanco').on('change', function(){
 		idBanco = $(this).val();
-	})
+		alert(idBanco);
+	});
 	
-	$('.pesquisar').on('submit', function(){
-		$.ajax({
-		  url: "tabela/pesquisaTabelas",
-		  contentType: "application/json",
-		  cache: "false", 
-		  data: JSON.stringify(idBanco),
-	}).sucess(function(response) {
-		 
-		$('#tabela').removeClass('isHidden');
+	$('.pesquisar').on('click', function(){
+		 $.ajax({
+             url: '/tabela/pesquisaTabelas?idBanco=' + idBanco,
+             type: 'GET',
+             cache: false
+         })
+	});
+	
 
-			$.each(response.data, function(element, i){
-
-				$('#tabela').append('<tr><td>element.descricao</td></tr>')
-
-				});
-
-			});
-	})
-
-</script>
-
-<script type="text/css">
-.isHiden{
-	display: none
-}
 </script>
 
 </html>

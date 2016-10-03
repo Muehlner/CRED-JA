@@ -81,7 +81,7 @@ public class TabelaController extends AbstractController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Tabela> pesquisaTabelas(Integer idBanco) {
 		return tabelaDao.buscaPorIdBanco(idBanco);

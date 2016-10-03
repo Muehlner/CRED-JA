@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.web.credja.dao.UsuarioDao;
 import br.com.web.credja.enums.Perfil;
-import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Usuario;
 
 @Controller
