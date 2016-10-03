@@ -23,7 +23,7 @@ import br.com.web.credja.model.Tabela;
 @Controller
 @Transactional
 @RequestMapping(value = { "tabela" })
-public class TabelaController {
+public class TabelaController extends AbstractController {
 
 	private static final String PAGINA_LISTA_TABELA = "consultas/tabela/lista";
 

@@ -16,12 +16,12 @@ import br.com.web.credja.model.Usuario;
 @Controller
 @Transactional
 @RequestMapping(value = { "usuario" })
-public class UsuarioController {
+public class UsuarioController extends AbstractController {
 
 	private static final String PAGINA_CADASTRO_USUARIO = "cadastros/usuario/cadastro";
 	private static final String PAGINA_LISTA_USUARIO = "consultas/usuario/lista";
 	private static final String PAGINA_ALTERACAO_USUARIO = "alteracoes/usuario/mostra";
-	
+
 	@Autowired
 	private UsuarioDao usuarioDao;
 
@@ -36,9 +36,9 @@ public class UsuarioController {
 
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
 	public String cadastro(Usuario usuario, String perfilUser) {
-		
+
 		usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
-		
+
 		usuarioDao.cadastrar(usuario);
 		return "redirect:lista";
 	}
@@ -49,21 +49,20 @@ public class UsuarioController {
 		modelAndView.addObject("usuarios", usuarioDao.lista());
 		return modelAndView;
 	}
-	
 
 	@RequestMapping(value = "remove")
 	public String remove(Usuario usuario) {
 		usuarioDao.remove(usuario);
 		return "redirect:lista";
 	}
-	
+
 	@RequestMapping(value = "mostra")
 	public ModelAndView mostra(Integer id) {
 		ModelAndView modelAndView = new ModelAndView(PAGINA_ALTERACAO_USUARIO);
 		modelAndView.addObject("usuario", usuarioDao.buscaPorId(id));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "altera")
 	public String altera(Usuario usuario) {
 		usuarioDao.altera(usuario);

@@ -12,7 +12,7 @@ import br.com.web.credja.model.Cliente;
 @Controller
 @Transactional
 @RequestMapping(value = { "cliente" })
-public class ClienteController {
+public class ClienteController extends AbstractController {
 
 	@Autowired
 	private ClienteDao clienteDao;

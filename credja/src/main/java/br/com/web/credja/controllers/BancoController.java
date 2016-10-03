@@ -1,56 +1,58 @@
 package br.com.web.credja.controllers;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import br.com.web.credja.dao.BancoDao;
 import br.com.web.credja.model.Banco;
+import br.com.web.credja.service.BancoService;
 
 @Controller
 @Transactional
 @RequestMapping(value = "banco")
-public class BancoController {
+public class BancoController extends AbstractController {
 
-	@Autowired
-	private BancoDao bancoDao;
+	private static final String PAGINA_CADASTRO_BANCO = "cadastros/banco/cadastro";
+	private static final String PAGINA_ALTERACAO_BANCO = "alteracoes/banco/mostra";
+	private static final String PAGINA_LISTA_BANCO = "consultas/banco/lista";
+
+	@Resource
+	private BancoService bancoService;
 
 	@RequestMapping(value = "")
-	public String page() {
-		return "cadastros/banco/cadastro";
+	public ModelAndView page() {
+		return this.modelAndView(PAGINA_CADASTRO_BANCO);
 	}
 
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
-	public String cadastro(Banco banco) {
-		bancoDao.cadastrar(banco);
-		return "redirect:lista";
+	public ModelAndView cadastro(Banco banco) {
+		bancoService.cadastrar(banco);
+		return this.redirect("lista");
 	}
 
 	@RequestMapping(value = "lista")
-	public String lista(Model model) {
-		model.addAttribute("bancos", bancoDao.lista());
-		return "consultas/banco/lista";
+	public ModelAndView lista() {
+		return this.modelAndView(PAGINA_LISTA_BANCO).addObject("bancos", bancoService.lista());
 	}
 
 	@RequestMapping(value = "mostra")
-	public String mostra(Integer id, Model model) {
-		model.addAttribute("banco", bancoDao.buscaPorId(id));
-		return "alteracoes/banco/mostra";
+	public ModelAndView mostra(Integer id) {
+		return this.modelAndView(PAGINA_ALTERACAO_BANCO).addObject("banco", bancoService.buscaPorId(id));
 	}
 
 	@RequestMapping(value = "altera")
-	public String altera(Banco banco) {
-		bancoDao.altera(banco);
-		return "redirect:lista";
+	public ModelAndView altera(Banco banco) {
+		bancoService.altera(banco);
+		return this.redirect("lista");
 	}
 
 	@RequestMapping(value = "remove")
-	public String remove(Banco banco) {
-		bancoDao.remove(banco);
-		return "redirect:lista";
+	public ModelAndView remove(Banco banco) {
+		bancoService.remove(banco);
+		return this.redirect("lista");
 	}
 }
