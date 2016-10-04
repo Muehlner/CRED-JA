@@ -36,7 +36,6 @@
 
 	$('.selectBanco').on('change', function(){
 		idBanco = $(this).val();
-		alert(idBanco);
 	});
 	
 	$('.pesquisar').on('click', function(){
@@ -46,13 +45,9 @@
              dataType: 'json',
              cache: false
          })
-	}).success(function (response) {                       
-		$.each(response.data, function(element, i){
-
-			alert(element.descricao);
-
-		});
-    });
+	}).success(function () {
+		alert('sucess');	
+	});
 	
 
 </script>
