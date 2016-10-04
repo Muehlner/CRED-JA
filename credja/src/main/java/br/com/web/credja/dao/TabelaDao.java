@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.web.credja.model.Banco;
 import br.com.web.credja.model.Tabela;
 
 @Repository
@@ -29,13 +28,10 @@ public class TabelaDao {
 		manager.merge(tabela);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Tabela> buscaPorIdBanco(Integer idBanco) {
-		Banco banco = (Banco) manager.createQuery("select b from Banco b where b.id = :idBanco")
-		.setParameter("idBanco", idBanco).getSingleResult();
-		
-		List<Tabela> tabelas = banco.getTabelas();
-
-		
+		List<Tabela> tabelas = manager.createQuery("select t from Tabela t where t.banco.id = :idBanco")
+				.setParameter("idBanco", idBanco).getResultList();
 		return tabelas;
 	}
 
