@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Banco implements Serializable {
 
@@ -28,6 +30,7 @@ public class Banco implements Serializable {
 	private String descricao;
 
 	@OneToMany(mappedBy = "banco")
+	@JsonBackReference
 	private List<Tabela> tabelas;
 
 	@OneToMany(mappedBy = "banco")

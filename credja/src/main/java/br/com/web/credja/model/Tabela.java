@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Tabela implements Serializable {
 
@@ -29,6 +31,7 @@ public class Tabela implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "banco_id")
+	@JsonManagedReference
 	private Banco banco;
 
 	@OneToMany(mappedBy = "tabela")
