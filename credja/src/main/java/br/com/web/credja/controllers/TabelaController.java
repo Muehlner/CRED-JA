@@ -80,7 +80,7 @@ public class TabelaController extends AbstractController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET)
+	@RequestMapping(value = "pesquisaTabelas", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<Tabela> pesquisaTabelas(Integer idBanco) {
 		return tabelaDao.buscaPorIdBanco(idBanco);
