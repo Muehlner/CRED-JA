@@ -55,17 +55,14 @@
             	  
             	 $.each(response, function(i, element){
 
-            		 trHTML += '<tr>' +
-            		 
+            		 $('<tr></tr>').appendTo('#tabela').html(
             		 				'<td>' + element.descricao 									 + '</td>' + 
             		 			    '<td> <a href="mostra?id=' + element.id + '"> Alterar </a> ' + '</td>' +
-            		 			    '<td> <a href="remove?id=' + element.id + '"> Remover </a> ' + '</td>' +
-            		 			    		
-            		 			'</tr>';
+            		 			    '<td> <a href="remove?id=' + element.id + '"> Remover </a> ' + '</td>' );
 
             	 });
             	 
-            	 $('#tabela').append(trHTML);
+            	 
          	}
 		 });
 		
