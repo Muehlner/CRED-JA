@@ -34,13 +34,13 @@
 
 	var idBanco;
 
-	$('.selectBanco').on('change', function(){
+	$('.selectBanco').on('change', function() {
 		idBanco = $(this).val();
 	});
 	
-	$('.pesquisar').on('click', function(){
+	$('.pesquisar').on('click', function() {
 		
-		$('#tabela').empty();
+		 $('#tabela').empty();
 		
 		 $.ajax({
              url: '/tabela/pesquisaTabelas?idBanco=' + idBanco,
@@ -55,7 +55,13 @@
             	  
             	 $.each(response, function(i, element){
 
-            		 trHTML += '<tr><td>' + element.descricao + '</td><td> <a href="mostra?id=' + element.id + '"> Alterar </a> ' + '</td></tr>';
+            		 trHTML += '<tr>' +
+            		 
+            		 				'<td>' + element.descricao 									 + '</td>' + 
+            		 			    '<td> <a href="mostra?id=' + element.id + '"> Alterar </a> ' + '</td>' +
+            		 			    '<td> <a href="remove?id=' + element.id + '"> Remover </a> ' + '</td>' +
+            		 			    		
+            		 			'</tr>';
 
             	 });
             	 
