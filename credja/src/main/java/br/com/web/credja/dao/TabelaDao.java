@@ -30,7 +30,7 @@ public class TabelaDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Tabela> buscaPorIdBanco(Integer idBanco) {
-		List<Tabela> tabelas = manager.createQuery("select t.id, t.descricao from Tabela t where t.banco.id = :idBanco")
+		List<Tabela> tabelas = manager.createQuery("select t from Tabela t where t.banco.id = :idBanco")
 				.setParameter("idBanco", idBanco).getResultList();
 		return tabelas;
 	}

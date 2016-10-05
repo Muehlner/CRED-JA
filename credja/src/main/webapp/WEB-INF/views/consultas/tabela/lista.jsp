@@ -8,6 +8,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<script type="text/javascript" src="/resources/js/jquery-3.1.1.js"></script>
+	<link href="/resources/css/tabela.css" rel="stylesheet">
   	
   	<title>Insert title here</title>
 </head>
@@ -24,11 +25,10 @@
 
 	<input type="button" value="Pesquisar" class="pesquisar" />
 	
-	<table id="tabela" class="isHiden">
-	
+	<table id="tabela" class="isHidden">
 	</table>
 
-</body>
+<body>
 
 <script type="text/javascript">
 
@@ -39,14 +39,30 @@
 	});
 	
 	$('.pesquisar').on('click', function(){
+		
+		$('#tabela').empty();
+		
 		 $.ajax({
              url: '/tabela/pesquisaTabelas?idBanco=' + idBanco,
              type: 'GET',
              dataType: 'json',
-             cache: false
-         })
-	}).success(function () {
-		alert('sucess');	
+             cache: false,
+             success: function (response) {
+            	 
+            	 $('#tabela').removeClass('isHidden');
+            	 
+            	 var trHTML = '';
+            	  
+            	 $.each(response, function(i, element){
+
+            		 trHTML += '<tr><td>' + element.descricao + '</td><td> <a href="mostra?id=' + element.id + '"> Alterar </a> ' + '</td></tr>';
+
+            	 });
+            	 
+            	 $('#tabela').append(trHTML);
+         	}
+		 });
+		
 	});
 	
 
