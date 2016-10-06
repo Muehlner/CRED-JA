@@ -26,11 +26,7 @@ public class UsuarioController extends AbstractController {
 
 	@RequestMapping(value = "")
 	public ModelAndView page() {
-		ModelAndView modelAndView = new ModelAndView(PAGINA_CADASTRO_USUARIO);
-
-		modelAndView.addObject("perfis", Perfil.values());
-
-		return modelAndView;
+		return this.modelAndView(PAGINA_CADASTRO_USUARIO).addObject("perfis", Perfil.values());
 	}
 
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
