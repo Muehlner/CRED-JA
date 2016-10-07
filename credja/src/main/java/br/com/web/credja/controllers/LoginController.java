@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Transactional
 @RequestMapping(value = "login")
 public class LoginController extends AbstractController {
-	
+
 	private static final String PAGINA_LOGIN = "login";
 
 	@RequestMapping(value = "")

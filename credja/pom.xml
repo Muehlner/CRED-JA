@@ -80,18 +80,13 @@
 			</exclusions>
 		</dependency>
 
+		<!-- Spring security -->
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>3.1.1</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.0.0.M2</version>
 		</dependency>
-		
-		<dependency>
-    		<groupId>com.google.code.gson</groupId>
-    		<artifactId>gson</artifactId>
-    		<version>2.7</version>
-		</dependency>
-		<!-- Spring security 
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -106,15 +101,9 @@
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>4.0.0.M2</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>4.0.0.M2</version>
-		</dependency>-->
+			<version>4.0.0.M2</version> 
+		</dependency> 
 		
 	</dependencies>
 	<repositories>
