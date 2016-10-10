@@ -44,9 +44,8 @@ public abstract class AbstractController {
 				return ((Usuario) principal).getUsuario();
 			}
 
-			LOGGER.debug(String.format(
-					"objeto de autenticacao [principal] nao e do tipo esperado. o objeto retornado foi [%s] do tipo [%s]. Nao sera possivel obter usuario logado.",
-					principal, principal.getClass().getCanonicalName()));
+			LOGGER.debug(String.format("objeto de autenticacao [principal] nao e do tipo esperado", principal,
+					principal.getClass().getCanonicalName()));
 
 			return null;
 		}
