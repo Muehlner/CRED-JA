@@ -1,9 +1,10 @@
 package br.com.web.credja.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,17 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.web.credja.enums.Perfil;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuario.findAll", query = "select u from Usuario u") })
-public class Usuario implements Serializable {
+public class Usuario implements UserDetails, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,21 +32,21 @@ public class Usuario implements Serializable {
 
 	private String nome;
 
-	//@CPF
+	// @CPF
 	private String cpf;
 
-	//@Email
+	// @Email
 	private String email;
 
 	private String telefone;
 
-	//@NotNull
-	//@NotBlank
-	//@Column(unique = true)
+	// @NotNull
+	// @NotBlank
+	// @Column(unique = true)
 	private String login;
 
-	//@NotNull
-	//@NotBlank
+	// @NotNull
+	// @NotBlank
 	private String senha;
 
 	@Enumerated(EnumType.STRING)
@@ -126,6 +125,45 @@ public class Usuario implements Serializable {
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(Perfil.values());
+	}
+
+	public Usuario getUsuario() {
+		return this;
+	}
+
+	@Override
+	public String getPassword() {
+		return senha;
+	}
+
+	@Override
+	public String getUsername() {
+		return login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 	@Override

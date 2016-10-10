@@ -1,8 +1,10 @@
 package br.com.web.credja.enums;
 
-public enum Perfil {
+import org.springframework.security.core.GrantedAuthority;
 
-	ADMINISTRADOR(1, "Administrador"), ATENDENTE(2, "Atendente");
+public enum Perfil implements GrantedAuthority {
+
+	ROLE_ADMINISTRADOR(1, "Administrador"), ROLE_ATENDENTE(2, "Atendente");
 
 	Integer index;
 
@@ -31,5 +33,10 @@ public enum Perfil {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	@Override
+	public String getAuthority() {
+		return descricao;
 	}
 }
