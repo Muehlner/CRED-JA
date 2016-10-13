@@ -11,15 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Transactional
 public class LoginController extends AbstractController {
 
+	private static final String PAGINA_DASHBOARD = "dashboard/home";
 	private static final String PAGINA_LOGIN = "login";
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView page() {
 		return this.modelAndView(PAGINA_LOGIN);
 	}
-	
+
 	@RequestMapping(value = "")
 	public ModelAndView login() {
-		return this.modelAndView("dashboard/home");
+		return this.modelAndView(PAGINA_DASHBOARD);
 	}
 }

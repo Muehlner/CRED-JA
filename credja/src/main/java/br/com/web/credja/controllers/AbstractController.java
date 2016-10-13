@@ -28,43 +28,43 @@ public abstract class AbstractController {
 		return modelAndView;
 	}
 
-//	protected Usuario getUser() {
-//		LOGGER.debug("obtendo usuario autenticado");
-//
-//		final Authentication authentication = this.getAuthentication();
-//
-//		if (authentication != null) {
-//			final Object principal = authentication.getPrincipal();
-//
-//			LOGGER.debug(String.format("objeto user principal obtido [%s]", principal));
-//
-//			if (principal instanceof Usuario) {
-//				LOGGER.debug(String.format("usuario autenticado [%s]", authentication.getName()));
-//
-//				return ((Usuario) principal).getUsuario();
-//			}
-//
-//			LOGGER.debug(String.format("objeto de autenticacao [principal] nao e do tipo esperado", principal,
-//					principal.getClass().getCanonicalName()));
-//
-//			return null;
-//		}
-//
-//		LOGGER.debug("objeto de autenticacao esta nulo. nao sera possivel obter usuario logado.");
-//
-//		return null;
-//	}
-//
-//	private Authentication getAuthentication() {
-//		return SecurityContextHolder.getContext().getAuthentication();
-//	}
-//
-//	protected boolean hasRole(String role) {
-//		for (final GrantedAuthority g : this.getAuthentication().getAuthorities()) {
-//			if (g.getAuthority().equals(role)) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
+	protected Usuario getUser() {
+		LOGGER.debug("obtendo usuario autenticado");
+
+		final Authentication authentication = this.getAuthentication();
+
+		if (authentication != null) {
+			final Object principal = authentication.getPrincipal();
+
+			LOGGER.debug(String.format("objeto user principal obtido [%s]", principal));
+
+			if (principal instanceof Usuario) {
+				LOGGER.debug(String.format("usuario autenticado [%s]", authentication.getName()));
+
+				return ((Usuario) principal).getUsuario();
+			}
+
+			LOGGER.debug(String.format("objeto de autenticacao [principal] nao e do tipo esperado", principal,
+					principal.getClass().getCanonicalName()));
+
+			return null;
+		}
+
+		LOGGER.debug("objeto de autenticacao esta nulo. nao sera possivel obter usuario logado.");
+
+		return null;
+	}
+
+	private Authentication getAuthentication() {
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+
+	protected boolean hasRole(String role) {
+		for (final GrantedAuthority g : this.getAuthentication().getAuthorities()) {
+			if (g.getAuthority().equals(role)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

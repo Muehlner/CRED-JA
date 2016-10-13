@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -34,7 +35,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/less/**")		.permitAll()
 				.antMatchers("/vendor/**")		.permitAll()
 				
-				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll();
+				.anyRequest().authenticated()
+				
+				.and().formLogin().loginPage("/login").permitAll()
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 
 	@Override
