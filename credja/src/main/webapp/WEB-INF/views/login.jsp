@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 	<head>
-	    <meta charset="utf-8">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="">
@@ -31,22 +34,22 @@
 	                        <h3 class="panel-title">Login - Cred Já</h3>
 	                    </div>
 	                    <div class="panel-body">
-	                        <form role="form">
+	                        <form:form role="form" servletRelativeAction="/login" method="post">
 	                            <fieldset>
 	                                <div class="form-group">
-	                                    <input class="form-control" placeholder="Usuário" name="login" type="email" autofocus>
+	                                    <input class="form-control" placeholder="Usuário" name="username" type="text" autofocus>
 	                                </div>
 	                                <div class="form-group">
-	                                    <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+	                                    <input class="form-control" placeholder="Senha" name="password" type="password" value="">
 	                                </div>
 	                                <div class="checkbox">
 	                                    <label>
 	                                        <input name="remember" type="checkbox" value="Remember Me">Mantenha-me conectado
 	                                    </label>
 	                                </div>
-	                                <a href="dashboard/home" class="btn btn-lg btn-primary btn-block">Login</a>
+	                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login" />
 	                            </fieldset>
-	                        </form>
+	                        </form:form>
 	                    </div>
 	                </div>
 	            </div>

@@ -32,7 +32,7 @@ public class UsuarioController extends AbstractController {
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
 	public String cadastro(Usuario usuario, String perfilUser) {
 
-		usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
+	//	usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
 
 		usuarioDao.cadastrar(usuario);
 		return "redirect:lista";

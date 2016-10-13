@@ -1,24 +1,21 @@
 package br.com.web.credja.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import br.com.web.credja.enums.Perfil;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuario.findAll", query = "select u from Usuario u") })
@@ -49,8 +46,8 @@ public class Usuario implements UserDetails, Serializable {
 	// @NotBlank
 	private String senha;
 
-	@Enumerated(EnumType.STRING)
-	private Perfil perfil;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Role> roles;
 
 	@OneToMany(mappedBy = "usuario")
 	private List<Cliente> clientes;
@@ -111,14 +108,6 @@ public class Usuario implements UserDetails, Serializable {
 		this.senha = senha;
 	}
 
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
-
 	public List<Cliente> getClientes() {
 		return clientes;
 	}
@@ -129,7 +118,7 @@ public class Usuario implements UserDetails, Serializable {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(Perfil.values());
+		return roles;
 	}
 
 	public Usuario getUsuario() {
@@ -176,7 +165,7 @@ public class Usuario implements UserDetails, Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((perfil == null) ? 0 : perfil.hashCode());
+		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
@@ -221,7 +210,10 @@ public class Usuario implements UserDetails, Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (perfil != other.perfil)
+		if (roles == null) {
+			if (other.roles != null)
+				return false;
+		} else if (!roles.equals(other.roles))
 			return false;
 		if (senha == null) {
 			if (other.senha != null)

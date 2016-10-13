@@ -33,7 +33,7 @@ public class ApplicationWebConfiguration extends WebMvcConfigurerAdapter {
 	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".html");
+		resolver.setSuffix(".jsp");
 		return resolver;
 	}
 

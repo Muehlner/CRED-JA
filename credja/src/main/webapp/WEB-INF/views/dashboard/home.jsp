@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cred J√° - Emprestimos</title>
+    <title>Cred J· - Emprestimos</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,12 +28,14 @@
 
 <body>
 
+	<security:authentication property="principal" var="user"/>
+	
     <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Cred J√° | Vers√£o 1.0</a>
+                <a class="navbar-brand" href="#">Cred J· | Vers„o 1.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -43,9 +45,9 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usu√°rio</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usu·rio</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configura√ß√µes</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> ConfiguraÁıes</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
@@ -67,7 +69,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Cadastros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Org√£o</a>
+                                    <a href="panels-wells.html">Org„o</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Banco</a>
@@ -79,7 +81,7 @@
                                     <a href="typography.html">Coeficiente</a>
                                 </li>
                                 <li>
-                                    <a href="icons.html"> Usu√°rio</a>
+                                    <a href="icons.html"> Usu·rio</a>
                                 </li>
                                 <li>
                                     <a href="grid.html">Cliente</a>
@@ -88,10 +90,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Altera√ß√µes<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> AlteraÁıes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Org√£o</a>
+                                    <a href="panels-wells.html">Org„o</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Banco</a>
@@ -103,7 +105,7 @@
                                     <a href="typography.html">Coeficiente</a>
                                 </li>
                                 <li>
-                                    <a href="icons.html"> Usu√°rio</a>
+                                    <a href="icons.html"> Usu·rio</a>
                                 </li>
                                 <li>
                                     <a href="grid.html">Cliente</a>
@@ -115,7 +117,7 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Org√£o</a>
+                                    <a href="panels-wells.html">Org„o</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Banco</a>
@@ -127,7 +129,7 @@
                                     <a href="typography.html">Coeficiente</a>
                                 </li>
                                 <li>
-                                    <a href="icons.html"> Usu√°rio</a>
+                                    <a href="icons.html"> Usu·rio</a>
                                 </li>
                                 <li>
                                     <a href="grid.html">Cliente</a>
@@ -145,7 +147,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Dashboard  - ${user.nome} </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -182,7 +184,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div>Contratos em negocia√ß√£o</div>
+                                    <div>Contratos em negociaÁ„o</div>
                                     <div class="huge">26</div>
                                 </div>
                             </div>
