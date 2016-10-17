@@ -30,8 +30,8 @@
 	
 	<body class="${bodyName}">
 	 	<div id="wrapper">
-			<%@include file="/WEB-INF/views/common/header.jsp" %>
-			<%@include file="/WEB-INF/views/common/menu.jsp" %>
+			<jsp:include page="/WEB-INF/views/common/header.jsp" />
+			<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 			<jsp:doBody />
 		</div>
 	</body>
