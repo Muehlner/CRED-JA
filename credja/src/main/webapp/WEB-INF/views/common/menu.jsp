@@ -80,7 +80,7 @@
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMIN')">
 	                                <li>
-	                                    <a href="/usuario"> Usuários</a>
+	                                    <a href="/usuario/lista"> Usuários</a>
 	                                </li>
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_ATENDENTE')">
