@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuario.findAll", query = "select u from Usuario u") })
@@ -105,7 +107,8 @@ public class Usuario implements UserDetails, Serializable {
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.senha = passwordEncoder.encode(senha);
 	}
 
 	public List<Cliente> getClientes() {
@@ -114,6 +117,14 @@ public class Usuario implements UserDetails, Serializable {
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

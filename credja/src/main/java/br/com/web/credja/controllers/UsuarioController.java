@@ -1,5 +1,8 @@
 package br.com.web.credja.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.web.credja.dao.UsuarioDao;
 import br.com.web.credja.enums.Perfil;
+import br.com.web.credja.model.Role;
 import br.com.web.credja.model.Usuario;
 
 @Controller
@@ -33,8 +37,23 @@ public class UsuarioController extends AbstractController {
 	public String cadastro(Usuario usuario, String perfilUser) {
 
 	//	usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
-
+		
+		List<Role> roles = new ArrayList<>();
+		
+		Role role = new Role();
+		
+		if (perfilUser.equalsIgnoreCase("Administrador")) {
+			role.setName("ROLE_ADMINISTRADOR");
+			roles.add(role);
+		} else if (perfilUser.equalsIgnoreCase("Atendente")) {
+			role.setName("ROLE_ATENDENTE");
+			roles.add(role);
+		}
+		
+		usuario.setRoles(roles);
+		
 		usuarioDao.cadastrar(usuario);
+		
 		return "redirect:lista";
 	}
 
@@ -42,6 +61,7 @@ public class UsuarioController extends AbstractController {
 	public ModelAndView lista() {
 		ModelAndView modelAndView = new ModelAndView(PAGINA_LISTA_USUARIO);
 		modelAndView.addObject("usuarios", usuarioDao.lista());
+		modelAndView.addObject("perfis", Perfil.values());
 		return modelAndView;
 	}
 

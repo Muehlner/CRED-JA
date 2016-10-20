@@ -31,7 +31,7 @@
 	                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	                       	<h4 class="modal-title" id="labelCreateUuser">Criar Usuário</h4>
 	                   	</div>
-	                   		<form:form role="form" servletRelativeAction="/usuario" method="post">
+	                   		<form:form role="form" servletRelativeAction="usuario/cadastra" method="post">
 		                   		<div class="modal-body">
 		                        	<div class="form-group">
                                          <label>Nome</label>
@@ -58,7 +58,12 @@
                                          <input class="form-control" type="password">
                                     </div>
                                     <div class="form-group">
-                                         <label>Perfil</label>
+                                        <label>Perfil</label>
+                                        <select class="form-control" name="perfilUser" >
+                                        	<option>Selecione...</option>
+                                        	<option>Administrador</option>
+                                        	<option>Atendente</option>
+                                        </select>
                                         
                                     </div>
 		                   		</div>
