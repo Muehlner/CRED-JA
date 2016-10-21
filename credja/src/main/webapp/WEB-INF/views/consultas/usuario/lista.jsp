@@ -24,6 +24,58 @@
 				</button>
 			</div>
 			
+			
+			<div class="col-lg-12">
+			<br />
+	            <div class="panel panel-default">
+	                <!-- /.panel-heading -->
+	                <div class="panel-body">
+	                    <div class="table-responsive">
+		                        <table class="table table-hover">
+		                            <thead>
+		                                <tr>
+		                                    <th>Nome</th>
+		                                    <th>E-mail</th>
+		                                    <th>CPF</th>
+		                                    <th>Login</th>
+		                                    <th>Telefone</th>
+		                                    <th>Perfil</th>
+		                                    <th style="text-align: center">Remover</th>
+		                                    <th style="text-align: center">Alterar</th>
+		                                </tr>
+		                            </thead>
+	                    			<c:forEach items="${usuarios}" var="usuario">
+			                            <tbody>
+			                                <tr>
+			                                    <td>${usuario.nome}</td>
+			                                    <td>${usuario.email}</td>
+			                                    <td>${usuario.cpf}</td>
+			                                    <td>${usuario.login}</td>
+			                                    <td>${usuario.telefone}</td>
+			                                    <td>Administrador</td>
+			                                    <td style="text-align: center">
+			                                    	<a href="#">	
+			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
+			                                    	</a>
+                                				</td>
+                                				<td style="text-align: center">
+			                                    	<a href="#">	
+			                                    		<span class="glyphicon glyphicon-edit text-success"></span> 
+			                                    	</a>
+			                                    </td>
+			                                </tr>
+			                            </tbody>
+	                        		</c:forEach>
+		                        </table>
+	                    </div>
+	                    <!-- /.table-responsive -->
+	                </div>
+	                <!-- /.panel-body -->
+	            </div>
+	            <!-- /.panel -->
+	        </div>
+			<!-- /.col-lg-6 -->
+			
 		   	<div class="modal fade" id="criarUsuario" tabindex="-1" role="dialog" aria-labelledby="labelCreateUuser" aria-hidden="true">
 	           <div class="modal-dialog">
 	               <div class="modal-content">
@@ -31,7 +83,7 @@
 	                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	                       	<h4 class="modal-title" id="labelCreateUuser">Criar Usuário</h4>
 	                   	</div>
-	                   		<form:form role="form" servletRelativeAction="usuario/cadastra" method="post">
+	                   		<form:form role="form" servletRelativeAction="../usuario/cadastra" method="post">
 		                   		<div class="modal-body">
 		                        	<div class="form-group">
                                          <label>Nome</label>
