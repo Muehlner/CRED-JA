@@ -54,12 +54,12 @@
 			                                    <td>${usuario.telefone}</td>
 			                                    <td>Administrador</td>
 			                                    <td style="text-align: center">
-			                                    	<a href="#">	
+			                                    	<a href="#" data-toggle="modal" data-target="#excluirUsuario">	
 			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
 			                                    	</a>
                                 				</td>
                                 				<td style="text-align: center">
-			                                    	<a href="#">	
+			                                    	<a href="#" data-toggle="modal" data-target="#criarUsuario">	
 			                                    		<span class="glyphicon glyphicon-edit text-success"></span> 
 			                                    	</a>
 			                                    </td>
@@ -76,6 +76,28 @@
 	        </div>
 			<!-- /.col-lg-6 -->
 			
+			<div class="modal fade" id="excluirUsuario" tabindex="-1" role="dialog" aria-labelledby="labelRemoveuser" aria-hidden="true">
+	           <div class="modal-dialog">
+	               <div class="modal-content">
+	                   	<div class="modal-header">
+	                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                       	<h4 class="modal-title" id="labelRemoveuser">Excluir Usuário</h4>
+	                   	</div>
+                   		<div class="modal-body">
+                   			Deseja excluir o(a) Usuário(a)?
+                   		</div>	
+	                  	<div class="modal-footer">
+	                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	                       	<button type="submit" class="btn btn-primary">Excluir</button>
+	                   	</div>
+	                   		
+	               </div>
+	               <!-- /.modal-content -->
+	           </div>
+	           <!-- /.modal-dialog -->
+	       </div>
+	       <!-- /.modal -->
+	      
 		   	<div class="modal fade" id="criarUsuario" tabindex="-1" role="dialog" aria-labelledby="labelCreateUuser" aria-hidden="true">
 	           <div class="modal-dialog">
 	               <div class="modal-content">
@@ -87,27 +109,27 @@
 		                   		<div class="modal-body">
 		                        	<div class="form-group">
                                          <label>Nome</label>
-                                         <input class="form-control">
+                                         <input class="form-control" name="nome">
                                     </div>
 		                       		<div class="form-group">
                                          <label>E-mail</label>
-                                         <input class="form-control">
+                                         <input class="form-control" name="email">
                                     </div>
                                     <div class="form-group">
                                          <label>CPF</label>
-                                         <input class="form-control">
+                                         <input class="form-control" name="cpf">
                                     </div>
                                     <div class="form-group">
                                          <label>Telefone</label>
-                                         <input class="form-control">
+                                         <input class="form-control" name="telefone">
                                     </div>
                                     <div class="form-group">
                                          <label>Login</label>
-                                         <input class="form-control">
+                                         <input class="form-control" name="login">
                                     </div>
                                     <div class="form-group">
                                          <label>Senha</label>
-                                         <input class="form-control" type="password">
+                                         <input class="form-control" type="password" name="senha">
                                     </div>
                                     <div class="form-group">
                                         <label>Perfil</label>
@@ -120,7 +142,7 @@
                                     </div>
 		                   		</div>
 			                  	<div class="modal-footer">
-			                    	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 			                       	<button type="submit" class="btn btn-primary">Salvar</button>
 			                   	</div>
 	                   		</form:form>
