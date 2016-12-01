@@ -61,7 +61,7 @@
 			                                    </c:forEach>
 			                                    
 			                                    <td style="text-align: center">
-			                                    	<a href="../usuario/remove?id=(${usuario.id})">	
+			                                    	<a href="../usuario/remove?id=${usuario.id}">	
 			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
 			                                    	</a>
                                 				</td>
