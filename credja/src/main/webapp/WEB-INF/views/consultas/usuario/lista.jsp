@@ -10,7 +10,6 @@
 	<security:authentication property="principal" var="user"/>
 	
 	<div id="page-wrapper">
-	
 	 	<div class="row">
 			<div class="col-lg-12">
             	<h1 class="page-header">Gerenciamento de Usuários</h1>
@@ -19,7 +18,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
-				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#criarUsuario">
+				<button class="btn btn-primary btn-lg">
 					Criar Usuário
 				</button>
 			</div>
@@ -46,7 +45,7 @@
 		                            </thead>
 	                    			<c:forEach items="${usuarios}" var="usuario">
 			                            <tbody>
-			                                <tr>
+			                                <tr id="tr_${usuario.id}">
 			                                    <td>${usuario.nome}</td>
 			                                    <td>${usuario.email}</td>
 			                                    <td>${usuario.cpf}</td>
@@ -62,12 +61,13 @@
 			                                    </c:forEach>
 			                                    
 			                                    <td style="text-align: center">
-			                                    	<a href="#" data-toggle="modal" data-target="#excluirUsuario">	
+			                                    	<a href="../usuario/remove?id=(${usuario.id})">	
 			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
 			                                    	</a>
                                 				</td>
                                 				<td style="text-align: center">
-			                                    	<a href="#" data-toggle="modal" data-target="#criarUsuario">	
+                                					<security:csrfInput/>
+			                                    	<a href="../usuario/mostra?id=${usuario.id}">	
 			                                    		<span class="glyphicon glyphicon-edit text-success"></span> 
 			                                    	</a>
 			                                    </td>
@@ -83,85 +83,16 @@
 	            <!-- /.panel -->
 	        </div>
 			<!-- /.col-lg-6 -->
-			
-			<div class="modal fade" id="excluirUsuario" tabindex="-1" role="dialog" aria-labelledby="labelRemoveuser" aria-hidden="true">
-	           <div class="modal-dialog">
-	               <div class="modal-content">
-	                   	<div class="modal-header">
-	                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                       	<h4 class="modal-title" id="labelRemoveuser">Excluir Usuário</h4>
-	                   	</div>
-                   		<div class="modal-body">
-                   			Deseja excluir o(a) Usuário(a)?
-                   		</div>	
-	                  	<div class="modal-footer">
-	                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	                       	<button type="submit" class="btn btn-primary">Excluir</button>
-	                   	</div>
-	                   		
-	               </div>
-	               <!-- /.modal-content -->
-	           </div>
-	           <!-- /.modal-dialog -->
-	       </div>
-	       <!-- /.modal -->
-	      
-		   	<div class="modal fade" id="criarUsuario" tabindex="-1" role="dialog" aria-labelledby="labelCreateUuser" aria-hidden="true">
-	           <div class="modal-dialog">
-	               <div class="modal-content">
-	                   	<div class="modal-header">
-	                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	                       	<h4 class="modal-title" id="labelCreateUuser">Criar Usuário</h4>
-	                   	</div>
-	                   		<form:form role="form" servletRelativeAction="../usuario/cadastra" method="post">
-		                   		<div class="modal-body">
-		                        	<div class="form-group">
-                                         <label>Nome</label>
-                                         <input class="form-control" name="nome" required title="O campo nome é obrigatorio..." />
-                                    </div>
-		                       		<div class="form-group">
-                                         <label>E-mail</label>
-                                         <input class="form-control" name="email">
-                                    </div>
-                                    <div class="form-group">
-                                         <label>CPF</label>
-                                         <input class="form-control" name="cpf">
-                                    </div>
-                                    <div class="form-group">
-                                         <label>Telefone</label>
-                                         <input class="form-control" name="telefone">
-                                    </div>
-                                    <div class="form-group">
-                                         <label>Login</label>
-                                         <input class="form-control" name="login">
-                                    </div>
-                                    <div class="form-group">
-                                         <label>Senha</label>
-                                         <input class="form-control" type="password" name="senha">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Perfil</label>
-                                        <select class="form-control" name="perfilUser" >
-                                        	<option>Selecione...</option>
-                                        	<option>Administrador</option>
-                                        	<option>Atendente</option>
-                                        </select>
-                                        
-                                    </div>
-		                   		</div>
-			                  	<div class="modal-footer">
-			                    	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-			                       	<button type="submit" class="btn btn-primary">Salvar</button>
-			                   	</div>
-	                   		</form:form>
-	               </div>
-	               <!-- /.modal-content -->
-	           </div>
-	           <!-- /.modal-dialog -->
-	       </div>
-	       <!-- /.modal -->
 		</div>
 	</div>
+	
+	 <script type="text/javascript">
+	    function removeUsuario(id) {
+	      $.post("../usuario/remove", {'id' : id}, function() {  
+	    	  $("#tr_"+id).closest("tr").hide();
+	      });
+	    }
+	  </script>
 	
 	<!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>

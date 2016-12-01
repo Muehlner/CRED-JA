@@ -1,40 +1,70 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
-<h3>Alterar Usuario - ${usuario.nome}</h3>
-  
-  <form action="altera">
 
-    <input type="hidden" name="id" value="${usuario.id}" />
-  
-    	Nome:
-		<input type="text" name="nome" value="${usuario.nome}" /> <br /><br />
-		
-		Cpf:
-		<input type="text" name="cpf" value="${usuario.cpf}"/> <br /><br />
-		
-		E-mail:
-		<input type="text" name="email" value="${usuario.email}" /> <br /><br />
-		
-		Telefone:
-		<input type="text" name="telefone" value="${usuario.telefone}"/> <br /><br />
-		
-		Login:
-		<input type="text" name="login" value="${usuario.login}" /> <br /><br />
-		
-		Senha:
-		<input type="password" name="senha" /> <br /><br />
-		
-		
-    <input type="submit" value="Alterar"/>
-  </form>
-
-</body>
-</html>
+<mgTags:template bodyName="cadastroUsuario">
+	<div id="page-wrapper">
+		<div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Alteração de Usuario</h1>
+	        </div>
+        </div>
+		  
+		<div class="row"> 
+		  <form action="../usuario/altera" method="post">
+			
+			<security:csrfInput/>
+			
+			<div class="col-lg-6">
+			
+					<input type="hidden" name="id" value="${usuario.id}">
+			
+					<div class="form-group">
+						<label>Nome</label>
+						<input class="form-control" name="nome" placeholder="Digite o nome completo" value="${usuario.nome}" />
+					</div>
+					
+					
+					<div class="form-group">
+						<label>CPF</label>
+						<input class="form-control" name="cpf" placeholder="999.999.999-99" value="${usuario.cpf}" />
+					</div>
+					
+					<div class="form-group">
+						<label>Email</label>
+						<input class="form-control" name="email" placeholder="exemplo@teste.com.br" value="${usuario.email}" />
+					</div>
+					
+					<div class="form-group">
+						<label>Telefone</label>
+						<input class="form-control" name="telefone" placeholder="(99) 99999-9999" value="${usuario.telefone}" />
+					</div>
+					
+					<div class="form-group">
+						<label>Login</label>
+						<input class="form-control" name="login" placeholder="usuario" value="${usuario.login}" />
+					</div>
+					
+					<div class="form-group">
+						<label>Senha</label>
+						<input class="form-control" name="senha" type="password" placeholder="password" required="required" />
+					</div>
+					
+					<div class="form-group">
+						<label>Perfil</label>
+						<form:select path="perfis" name="perfilUser"  class="form-control">
+							<form:option value="Selecione" label="Selecione..." />
+							<form:options items="${perfis}" itemValue="descricao" itemLabel="descricao" />
+						</form:select>
+					</div>
+					
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+			        	<button type="submit" class="btn btn-primary">Alterar</button>
+			        </div>
+				</div>
+		  	</form>  	
+		</div>
+	</div>
+</mgTags:template>

@@ -48,10 +48,10 @@
 					
 					<div class="form-group">
 						<label>Senha</label>
-						<input class="form-control" name="login" type="password" placeholder="password"/>
+						<input class="form-control" name="senha" type="password" placeholder="password"/>
 					</div>
 					<div class="form-group">
-						<label>Senha</label>
+						<label>Perfil</label>
 						<form:select path="perfis" name="perfilUser"  class="form-control">
 							<form:option value="Selecione" label="Selecione..." />
 							<form:options items="${perfis}" itemValue="descricao" itemLabel="descricao" />
