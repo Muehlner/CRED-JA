@@ -21,6 +21,7 @@ import br.com.web.credja.model.Usuario;
 @RequestMapping(value = { "usuario" })
 public class UsuarioController extends AbstractController {
 
+	private static final String ROLE_PREFIX = "ROLE_";
 	private static final String PAGINA_CADASTRO_USUARIO = "cadastros/usuario/cadastro";
 	private static final String PAGINA_LISTA_USUARIO = "consultas/usuario/lista";
 	private static final String PAGINA_ALTERACAO_USUARIO = "alteracoes/usuario/mostra";
@@ -37,7 +38,7 @@ public class UsuarioController extends AbstractController {
 	public String cadastro(Usuario usuario, String perfilUser) {
 
 		Role role = new Role();
-		role.setName("ROLE_" + perfilUser.toUpperCase());
+		role.setName(ROLE_PREFIX + perfilUser.toUpperCase());
 
 		List<Role> roles = new ArrayList<>();
 		roles.add(role);
@@ -60,8 +61,8 @@ public class UsuarioController extends AbstractController {
 	public void remove(Integer id) {
 		Usuario usuario = new Usuario();
 		usuario.setId(id);
-		usuarioDao.remove(usuario );
-		
+		usuarioDao.remove(usuario);
+
 	}
 
 	@RequestMapping(value = "mostra")
@@ -74,7 +75,7 @@ public class UsuarioController extends AbstractController {
 	@RequestMapping(value = "altera", method = RequestMethod.POST)
 	public String altera(Usuario usuario, String perfilUser) {
 		Role role = new Role();
-		role.setName("ROLE_" + perfilUser.toUpperCase());
+		role.setName(ROLE_PREFIX + perfilUser.toUpperCase());
 
 		List<Role> roles = new ArrayList<>();
 		roles.add(role);
