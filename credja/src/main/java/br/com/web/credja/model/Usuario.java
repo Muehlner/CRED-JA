@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,24 +33,30 @@ public class Usuario implements UserDetails, Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
+	//@NotNull
+	//@NotBlank(message = "O campo nome é obrigatorio")
 	private String nome;
 
-	// @CPF
+	//@NotNull
+	@Column(unique = true)
+	//@CPF(message = "CPF invalido")
 	private String cpf;
 
-	// @Email
+	//@NotBlank(message = "O campo email é obrigatorio")
+	//@Email(message = "E-mail invalido")
 	private String email;
 
+	//@NotBlank(message = "O campo telefone é obrigatorio")
 	private String telefone;
 
-	// @NotNull
-	// @NotBlank
-	// @Column(unique = true)
+	//@NotNull
+	//@Column(unique = true)
+	//@NotBlank(message = "O campo login é obrigatorio")
 	private String login;
 
-	// @NotNull
-	// @NotBlank
+	//@NotNull
+	//@NotBlank(message = "O campo senha é obrigatorio")
 	private String senha;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -118,7 +129,7 @@ public class Usuario implements UserDetails, Serializable {
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	
+
 	public List<Role> getRoles() {
 		return roles;
 	}

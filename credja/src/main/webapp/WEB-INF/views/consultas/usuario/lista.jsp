@@ -52,7 +52,15 @@
 			                                    <td>${usuario.cpf}</td>
 			                                    <td>${usuario.login}</td>
 			                                    <td>${usuario.telefone}</td>
-			                                    <td>Administrador</td>
+			                                    <c:forEach items="${usuario.roles}" var="role">
+			                                    	<c:if test="${role.name == 'ROLE_ADMINISTRADOR'}">
+			                                    		<td>Administrador</td>
+			                                    	</c:if>
+			                                    	<c:if test="${role.name == 'ROLE_ATENDENTE'}">
+			                                    		<td>Atendente</td>
+			                                    	</c:if>
+			                                    </c:forEach>
+			                                    
 			                                    <td style="text-align: center">
 			                                    	<a href="#" data-toggle="modal" data-target="#excluirUsuario">	
 			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
@@ -109,7 +117,7 @@
 		                   		<div class="modal-body">
 		                        	<div class="form-group">
                                          <label>Nome</label>
-                                         <input class="form-control" name="nome">
+                                         <input class="form-control" name="nome" required title="O campo nome é obrigatorio..." />
                                     </div>
 		                       		<div class="form-group">
                                          <label>E-mail</label>

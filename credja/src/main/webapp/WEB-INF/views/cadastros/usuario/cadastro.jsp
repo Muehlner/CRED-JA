@@ -4,41 +4,65 @@
 
 <mgTags:template bodyName="cadastroUsuario">
  
- 	<security:authentication property="principal" var="user"/>
+ 	
 	
 	<div id="page-wrapper">
 		<div class="row">
-			<h3>Cadastro de Usuario</h3>
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Cadastro de Usuario</h1>
+	        </div>
+        </div>
+        
+		<div class="row">
 		
 			<form action="usuario/cadastra" method="post">
 				
-				Nome:
-				<input type="text" name="nome" /> <br /><br />
+				<security:csrfInput/>
 				
-				Cpf:
-				<input type="text" name="cpf" /> <br /><br />
-				
-				E-mail:
-				<input type="text" name="email" /> <br /><br />
-				
-				Telefone:
-				<input type="text" name="telefone" /> <br /><br />
-				
-				Login:
-				<input type="text" name="login" /> <br /><br />
-				
-				Senha:
-				<input type="password" name="senha" /> <br /><br />
-				
-				
-				Perfil:
-				<form:select path="perfis" name="perfilUser">
-					<form:option value="Selecione" label="Selecione..." />
-					<form:options items="${perfis}" itemValue="descricao" itemLabel="descricao" />
-				</form:select>
-				
-				<input type="submit" value="Cadastrar" />
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label>Nome</label>
+						<input class="form-control" name="nome" placeholder="Digite o nome completo" />
+					</div>
 					
+					
+					<div class="form-group">
+						<label>CPF</label>
+						<input class="form-control" name="cpf" placeholder="999.999.999-99"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Email</label>
+						<input class="form-control" name="email" placeholder="exemplo@teste.com.br"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Telefone</label>
+						<input class="form-control" name="telefone" placeholder="(99) 99999-9999"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Login</label>
+						<input class="form-control" name="login" placeholder="usuario"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Senha</label>
+						<input class="form-control" name="login" type="password" placeholder="password"/>
+					</div>
+					<div class="form-group">
+						<label>Senha</label>
+						<form:select path="perfis" name="perfilUser"  class="form-control">
+							<form:option value="Selecione" label="Selecione..." />
+							<form:options items="${perfis}" itemValue="descricao" itemLabel="descricao" />
+						</form:select>
+					</div>
+					
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+			        	<button type="submit" class="btn btn-primary">Salvar</button>
+			        </div>
+				</div>
 			</form>
 		</div>
 	</div>

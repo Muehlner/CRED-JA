@@ -22,9 +22,11 @@
                                 <li>
                                     <a href="typography.html">Coeficiente</a>
                                 </li>
-                                <li>
-                                    <a href="icons.html"> Usuário</a>
-                                </li>
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
+	                                <li>
+	                                    <a href="/usuario"> Usuário</a>
+	                                </li>
+                                </security:authorize>
                                 <li>
                                     <a href="grid.html">Cliente</a>
                                 </li>
@@ -58,32 +60,32 @@
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            	<security:authorize access="hasRole('ROLE_ADMIN')">
+                            	<security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="panels-wells.html">Orgãos</a>
 	                                </li>
                                 </security:authorize>
-                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="buttons.html">Bancos</a>
 	                                </li>
                                 </security:authorize>
-                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="notifications.html">Tabelas</a>
 	                                </li>
                                 </security:authorize>
-                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="typography.html">Coeficientes</a>
 	                                </li>
                                 </security:authorize>
-                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="/usuario/lista"> Usuários</a>
 	                                </li>
                                 </security:authorize>
-                                <security:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_ATENDENTE')">
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_ATENDENTE')">
 	                                <li>
 	                                    <a href="grid.html">Clientes</a>
 	                                </li>

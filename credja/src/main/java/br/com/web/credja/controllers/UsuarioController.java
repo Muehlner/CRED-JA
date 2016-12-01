@@ -35,21 +35,13 @@ public class UsuarioController extends AbstractController {
 
 	@RequestMapping(value = "cadastra", method = RequestMethod.POST)
 	public String cadastro(Usuario usuario, String perfilUser) {
-
-	//	usuario.setPerfil(Perfil.valueOf(perfilUser.toUpperCase()));
-		
-		List<Role> roles = new ArrayList<>();
 		
 		Role role = new Role();
-		
-		if (perfilUser.equalsIgnoreCase("Administrador")) {
-			role.setName("ROLE_ADMINISTRADOR");
-			roles.add(role);
-		} else if (perfilUser.equalsIgnoreCase("Atendente")) {
-			role.setName("ROLE_ATENDENTE");
-			roles.add(role);
-		}
-		
+		role.setName("ROLE_"+perfilUser.toUpperCase());
+
+		List<Role> roles = new ArrayList<>();
+		roles.add(role);
+
 		usuario.setRoles(roles);
 		
 		usuarioDao.cadastrar(usuario);
@@ -61,7 +53,6 @@ public class UsuarioController extends AbstractController {
 	public ModelAndView lista() {
 		ModelAndView modelAndView = new ModelAndView(PAGINA_LISTA_USUARIO);
 		modelAndView.addObject("usuarios", usuarioDao.lista());
-		modelAndView.addObject("perfis", Perfil.values());
 		return modelAndView;
 	}
 
