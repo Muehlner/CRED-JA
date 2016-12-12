@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.web.credja.model.Orgao;
@@ -27,7 +28,7 @@ public class OrgaoController extends AbstractController {
 		return this.modelAndView(PAGINA_CADASTRO_ORGAO);
 	}
 
-	@RequestMapping(value = "cadastro")
+	@RequestMapping(value = "cadastro", method = RequestMethod.POST)
 	public ModelAndView cadastro(Orgao orgao) {
 		orgaoService.cadastro(orgao);
 		return this.redirect("lista");
@@ -43,7 +44,7 @@ public class OrgaoController extends AbstractController {
 		return this.modelAndView(PAGINA_ALTERACAO_ORGAO).addObject("orgao", orgaoService.buscaPorId(id));
 	}
 
-	@RequestMapping(value = "altera")
+	@RequestMapping(value = "altera", method = RequestMethod.POST)
 	public ModelAndView altera(Orgao orgao) {
 		orgaoService.altera(orgao);
 		return this.redirect("lista");

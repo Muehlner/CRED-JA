@@ -10,9 +10,11 @@
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Cadastros<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Orgão</a>
-                                </li>
+                            	<security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
+                                	<li>
+                                    	<a href="/orgao">Orgão</a>
+                                	</li>
+                                </security:authorize>
                                 <li>
                                     <a href="buttons.html">Banco</a>
                                 </li>
@@ -62,7 +64,7 @@
                             <ul class="nav nav-second-level">
                             	<security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
-	                                    <a href="panels-wells.html">Orgãos</a>
+	                                    <a href="/orgao/lista">Orgãos</a>
 	                                </li>
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">

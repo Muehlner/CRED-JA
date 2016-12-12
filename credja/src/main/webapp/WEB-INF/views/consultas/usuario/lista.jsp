@@ -16,14 +16,7 @@
             </div>
             
 		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<button class="btn btn-primary btn-lg">
-					Criar Usuário
-				</button>
-			</div>
-			
-			
+		<div class="row">			
 			<div class="col-lg-12">
 			<br />
 	            <div class="panel panel-default">
