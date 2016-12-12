@@ -1,24 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
-<h3>Alterar Banco - ${banco.id}</h3>
-  
-  <form action="altera">
-
-    <input type="hidden" name="id" value="${banco.id}" />
-  
-    Descrição:
-    
-    <input type="text" name="descricao" value="${banco.descricao}" >
-    <input type="submit" value="Alterar"/>
-  </form>
-
-</body>
-</html>
+<mgTags:template bodyName="cadastroBanco">
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Alteração de Banco</h1>
+			</div>
+		</div>
+		<div class="row"> 
+			<form action="../banco/altera" method="post">
+				
+				<security:csrfInput/>
+				
+			  
+				<div class="col-lg-6">
+			
+			    	<input type="hidden" name="id" value="${banco.id}" />
+			
+					<div class="form-group">
+						<label>Descrição</label>
+						<input class="form-control" name="descricao" placeholder="Digite a descrição do Banco" value="${banco.descricao}" />
+					</div>
+		    		<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+			        	<button type="submit" class="btn btn-primary">Alterar</button>
+			        </div>
+			    </div>
+			</form>
+		</div>
+	</div>
+</mgTags:template>

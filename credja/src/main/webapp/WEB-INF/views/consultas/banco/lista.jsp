@@ -1,32 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-	<body>
-	
-		<h3>Lista de Bancos</h3>
-	
-		<a href="/banco">Criar novo Banco</a>
+
+<mgTags:template bodyName="listaBancos">
+	<div id="page-wrapper">
+	 	<div class="row">
+			<div class="col-lg-12">
+            	<h1 class="page-header">Gerenciamento de Bancos</h1>
+            </div>
+            
+		</div>
 			
-		<table>
-		  	<tr>
-		    	<th>Id</th>
-		    	<th>DescriÃ§Ã£o</th>
-		  	</tr>
-		  	<c:forEach items="${bancos}" var="banco">
-		    	<tr>
-		      		<td>${banco.id}</td>
-		      		<td>${banco.descricao}</td>
-		      		<td><a href="mostra?id=${banco.id}">Alterar</a></td>
-		      		<td><a href="remove?id=${banco.id}">Remover</a></td>
-		    	</tr>
-			 </c:forEach>
-	  	</table>
-	</body>
-</html>
+		<div class="row">			
+			<div class="col-lg-12">
+			<br />
+	            <div class="panel panel-default">
+	                <!-- /.panel-heading -->
+	                <div class="panel-body">
+	                    <div class="table-responsive">
+                      			<table class="table table-hover">
+		                            <thead>
+		                            	<tr>
+								    		<th>Descrição</th>
+  										</tr>
+									</thead>
+	  								<c:forEach items="${bancos}" var="banco">
+	  									<tbody>
+									    	<tr>
+									      		<td>${banco.descricao}</td>
+									      		<td style="text-align: center">
+			                                    	<a href="../banco/remove?id=${banco.id}">	
+			                                    		<span class="glyphicon glyphicon-remove text-danger"></span> 
+			                                    	</a>
+                                				</td>
+                                				<td style="text-align: center">
+                                					<security:csrfInput/>
+			                                    	<a href="../banco/mostra?id=${banco.id}">	
+			                                    		<span class="glyphicon glyphicon-edit text-success"></span> 
+			                                    	</a>
+			                                    </td>
+									    	</tr>
+								    	<tbody>
+									</c:forEach>
+	  							</table>
+						</div>
+	                    <!-- /.table-responsive -->
+	                </div>
+	                <!-- /.panel-body -->
+	            </div>
+	            <!-- /.panel -->
+	        </div>
+			<!-- /.col-lg-6 -->
+		</div>
+	</div>
+</mgTags:template>

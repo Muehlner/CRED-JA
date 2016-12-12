@@ -3,9 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
 <mgTags:template bodyName="cadastroUsuario">
- 
- 	
-	
+
 	<div id="page-wrapper">
 		<div class="row">
 	        <div class="col-lg-12">

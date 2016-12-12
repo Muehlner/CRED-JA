@@ -15,9 +15,11 @@
                                     	<a href="/orgao">Orgão</a>
                                 	</li>
                                 </security:authorize>
-                                <li>
-                                    <a href="buttons.html">Banco</a>
-                                </li>
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
+                                	<li>
+                                    	<a href="/banco">Banco</a>
+                                	</li>
+                                </security:authorize>
                                 <li>
                                     <a href="notifications.html">Tabela</a>
                                 </li>
@@ -69,7 +71,7 @@
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
-	                                    <a href="buttons.html">Bancos</a>
+	                                    <a href="/banco/lista">Bancos</a>
 	                                </li>
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
