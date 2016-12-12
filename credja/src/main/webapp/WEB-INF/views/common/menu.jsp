@@ -20,9 +20,11 @@
                                     	<a href="/banco">Banco</a>
                                 	</li>
                                 </security:authorize>
-                                <li>
-                                    <a href="notifications.html">Tabela</a>
-                                </li>
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
+	                                <li>
+	                                    <a href="/tabela">Tabela</a>
+	                                </li>
+                                </security:authorize>
                                 <li>
                                     <a href="typography.html">Coeficiente</a>
                                 </li>
@@ -76,7 +78,7 @@
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
-	                                    <a href="notifications.html">Tabelas</a>
+	                                    <a href="/tabela/lista">Tabelas</a>
 	                                </li>
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">

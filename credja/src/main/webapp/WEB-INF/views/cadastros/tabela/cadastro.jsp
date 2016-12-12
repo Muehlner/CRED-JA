@@ -1,29 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
-</head>
-<body>
+<mgTags:template bodyName="cadastroTabela">
 
-	<form action="tabela/cadastra">
-
-		<label>Banco:</label>
-		<form:select path="bancos" name="idBanco">
-			<form:option value="Selecione" label="Selecione..." />
-			<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
-		</form:select>
-
-		Descrição da tabela:  <input type="text" name="descricao" /> 
-		
-		<input type="submit" value="Gravar" />
-
-	</form>
-
-</body>
-</html>
+	<div id="page-wrapper">
+		<div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Cadastro de Tabela</h1>
+	        </div>
+        </div>
+		<div class="row">
+			<form action="tabela/cadastra" method="post">
+				<security:csrfInput/>
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label>Banco</label>
+						<form:select path="bancos" name="idBanco"  class="form-control">
+							<form:option value="Selecione" label="Selecione..." />
+							<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
+						</form:select>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="form-group">
+						<label>Descrição</label>
+						<input class="form-control" name="descricao" placeholder="Digite a descrição da Tabela" />
+					</div>
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+				</div>			
+			</form>
+		</div>
+	</div>
+</mgTags:template>

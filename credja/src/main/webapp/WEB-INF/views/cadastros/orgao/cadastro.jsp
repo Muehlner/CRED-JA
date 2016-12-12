@@ -16,10 +16,11 @@
 				<security:csrfInput/>
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label>Nome</label>
+						<label>Descrição</label>
 						<input class="form-control" name="descricao" placeholder="Digite a descrição do Orgão" />
 					</div>
 					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
 						<button type="submit" class="btn btn-primary">Salvar</button>
 					</div>
 				</div>			
