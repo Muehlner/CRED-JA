@@ -2,7 +2,7 @@
 
 <table id="tabela">
 	<tr>
-		<th>Descrição</th>
+		<th>DescriÃ§Ã£oo</th>
 	</tr>
 	<c:forEach items="${tabelas}" var="tabela">
 		<tr>
