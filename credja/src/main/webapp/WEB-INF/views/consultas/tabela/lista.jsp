@@ -31,6 +31,7 @@
 			<div class="col-lg-12">
 				<security:csrfInput/>
 				<table id="tabela" class="isHidden table table-hover">
+				
 				</table>
 			</div>
 		</div>	
@@ -72,11 +73,36 @@
 				success: function (response) {
 					$('#tabela').removeClass('isHidden');
 					 
-					$.each(response, function(i, element){				 
-	            		 $('<tr></tr>').appendTo('#tabela').html(
-	            		 				'<td>' + element.descricao 									 + '</td>' + 
-	            		 			    '<td> <a href="mostra?id=' + element.id + '"> Alterar </a> ' + '</td>' +
-	            		 			    '<td> <a href="remove?id=' + element.id + '"> Remover </a> ' + '</td>' );
+					$.each(response, function(i, element){
+	            		$('#tabela').appendTo('#tabela').html(
+	            					'<thead>' +
+			                          	'<tr>' +
+			                            	'<th>Nome</th>' +
+			                              	'<th style="text-align: center">Remover</th>' +
+			                              	'<th style="text-align: center">Alterar</th>' +
+			                        	'</tr>' +
+			                    	'</thead>' +
+	            					
+			                    	'<tbody><tr>' +
+		            					
+	            						'<td>' + 
+		            						element.descricao + 
+		            					'</td>' +
+		            					
+		            				    '<td style="text-align: center">' +
+	                                		'<a href="../tabela/remove?id=' +  element.id + '">' +	
+	                                			'<span class="glyphicon glyphicon-remove text-danger"></span>' + 
+	                                		'</a>' +
+	                					'</td>' +
+	                					
+	                					'<td style="text-align: center">' + 
+	                                		'<a href="../tabela/mostra?id='+ element.id+ '">' +	
+	                                			'<span class="glyphicon glyphicon-edit text-success"></span>' + 
+	                                		'</a>' +
+	                                	'</td>' +
+	                                	
+                                	'</tr></tbody>'
+						);
 
 	            	 });
 				}
