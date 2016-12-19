@@ -14,7 +14,7 @@
 			<form action="coeficiente/cadastra" method="post">
 				<security:csrfInput/>
 				
-				<div class="col-lg-12">
+				<div class="col-lg-6">
 					<div class="form-group">
 						<label>Banco</label>
 						<form:select path="bancos" name="idBanco" class="selectBanco form-control" >
@@ -23,23 +23,30 @@
 						</form:select>
 					</div>
 				</div>
-				
-				
-					<div class="col-lg-12 isHidden" id="divSelectTabela">
-						<label>Tabela</label>
-						<div class="form-group">
-							<select id="selectTabela" class="form-control"></select>
-						</div>
+				<div class="col-lg-12">	</div>
+				<div class="col-lg-6 isHidden" id="divSelectTabela">
+					<label>Tabela</label>
+					<div class="form-group">
+						<select id="selectTabela" class="form-control"></select>
 					</div>
-					
-				
-				<div class="form-group">
-					<button type="button" class="btn btn-default">Cancelar</button>
-		        	<button type="submit" class="btn btn-primary">Salvar</button>
-		        </div>		
+					<div class="form-group">
+						<label>Prazo</label>
+						<input class="form-control" name="prazo" placeholder="Digite o prazo para o coeficiente" />
+					</div>
+					<div class="form-group">
+						<label>Prazo</label>
+						<input class="form-control" name="data" placeholder="Digite a data do coeficiente" />
+					</div>
+				</div>	
+				<div class="col-lg-12">					
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+			        	<button type="submit" class="btn btn-primary">Salvar</button>
+			        </div>		
+		        </div>
 			</form>
 		</div>	
-	</div>
+	</div>x
 	
 	<!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>

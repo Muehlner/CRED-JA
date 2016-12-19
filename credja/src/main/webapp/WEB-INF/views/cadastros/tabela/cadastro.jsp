@@ -22,16 +22,19 @@
 						</form:select>
 					</div>
 				</div>
-				<div class="col-lg-12">
+				<div class="col-lg-12"></div>
+				<div class="col-lg-6">
 					<div class="form-group">
 						<label>Descrição</label>
 						<input class="form-control" name="descricao" placeholder="Digite a descrição da Tabela" />
 					</div>
+				</div>
+				<div class="col-lg-12">			
 					<div class="form-group">
 						<button type="button" class="btn btn-default">Cancelar</button>
 						<button type="submit" class="btn btn-primary">Salvar</button>
 					</div>
-				</div>			
+				</div>	
 			</form>
 		</div>
 	</div>
