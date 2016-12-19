@@ -27,15 +27,19 @@
 				<div class="col-lg-6 isHidden" id="divSelectTabela">
 					<label>Tabela</label>
 					<div class="form-group">
-						<select id="selectTabela" class="form-control"></select>
+						<select id="selectTabela" class="form-control" name="idTabela"></select>
 					</div>
 					<div class="form-group">
 						<label>Prazo</label>
 						<input class="form-control" name="prazo" placeholder="Digite o prazo para o coeficiente" />
 					</div>
 					<div class="form-group">
-						<label>Prazo</label>
-						<input class="form-control" name="data" placeholder="Digite a data do coeficiente" />
+						<label>Valor</label>
+						<input class="form-control" name="valor" placeholder="Digite o valor para o coeficiente" />
+					</div>
+					<div class="form-group">
+						<label>Data</label>
+						<input type="text" class="form-control" name="data" placeholder="Digite a data do coeficiente" />
 					</div>
 				</div>	
 				<div class="col-lg-12">					
@@ -85,7 +89,7 @@
 					
 					$.each(response, function(i, element){
 						$('#selectTabela')
-				         .append($("<option></option>").text(element.descricao)); 
+				         .append($('<option value="' + element.id + '"' + '>' + '</option>').text(element.descricao)); 
 					});
 				}
 			});
