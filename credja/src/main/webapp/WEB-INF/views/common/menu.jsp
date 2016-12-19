@@ -26,7 +26,7 @@
 	                                </li>
                                 </security:authorize>
                                 <li>
-                                    <a href="typography.html">Coeficiente</a>
+                                    <a href="/coeficiente">Coeficiente</a>
                                 </li>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>

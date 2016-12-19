@@ -1,27 +1,95 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
-	<form action="coeficiente/cadastra">
+<mgTags:template bodyName="cadastroCoeficiente">
 
-		<label>Banco:</label>
+	<div id="page-wrapper">
+		<div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Cadastro de Coeficiente</h1>
+	        </div>
+        </div>
+        <div class="row">
+			<form action="coeficiente/cadastra" method="post">
+				<security:csrfInput/>
+				
+				<div class="col-lg-12">
+					<div class="form-group">
+						<label>Banco</label>
+						<form:select path="bancos" name="idBanco" class="selectBanco form-control" >
+							<form:option value="Selecione" label="Selecione..." />
+							<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
+						</form:select>
+					</div>
+				</div>
+				
+				
+					<div class="col-lg-12 isHidden" id="divSelectTabela">
+						<label>Tabela</label>
+						<div class="form-group">
+							<select id="selectTabela" class="form-control"></select>
+						</div>
+					</div>
+					
+				
+				<div class="form-group">
+					<button type="button" class="btn btn-default">Cancelar</button>
+		        	<button type="submit" class="btn btn-primary">Salvar</button>
+		        </div>		
+			</form>
+		</div>	
+	</div>
+	
+	<!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    
+    <script type="text/javascript">
+		var idBanco;
+
+		$('.selectBanco').on('change', function() {
+			idBanco = $(this).val();
+		});
 		
-		<form:select path="bancos" name="idBanco">
-			<form:option value="Selecione" label="Selecione..." />
-			<form:options items="${bancos}" itemValue="id" itemLabel="descricao" />
-		</form:select>
+		$('.selectBanco').on('change', function() {
+			
+			$.ajax({
+				url: '/tabela/pesquisaTabelas?idBanco=' + idBanco,
+				type: 'GET',
+				dataType: 'json',
+				cache: false,
+				success: function (response) {
+					
+					$('#divSelectTabela').removeClass('isHidden');
+					
+					$.each(response, function(i, element){
+						$('#selectTabela')
+				         .append($("<option></option>").text(element.descricao)); 
+					});
+				}
+			});
+		});
 		
-		<input type="submit" value="Gravar" />
-
-	</form>
-
-</body>
-</html>
+    </script>
+    
+    <style>
+    	.isHidden {
+			display: none
+		}
+    </style>
+	    
+</mgTags:template>
