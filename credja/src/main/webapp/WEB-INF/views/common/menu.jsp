@@ -25,17 +25,21 @@
 	                                    <a href="/tabela">Tabela</a>
 	                                </li>
                                 </security:authorize>
-                                <li>
-                                    <a href="/coeficiente">Coeficiente</a>
-                                </li>
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
+                                	<li>
+                                    	<a href="/coeficiente">Coeficiente</a>
+                                	</li>
+                                </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
 	                                    <a href="/usuario"> Usuário</a>
 	                                </li>
                                 </security:authorize>
-                                <li>
-                                    <a href="grid.html">Cliente</a>
-                                </li>
+                                <security:authorize access="hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_ATENDENTE')">
+                                	<li>
+                                    	<a href="/cliente">Cliente</a>
+                                	</li>
+                                </security:authorize>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
