@@ -44,30 +44,6 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Alterações<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Orgão</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Banco</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Tabela</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Coeficiente</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Usuário</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Cliente</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                             	<security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
@@ -97,7 +73,7 @@
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_ATENDENTE')">
 	                                <li>
-	                                    <a href="grid.html">Clientes</a>
+	                                    <a href="/cliente/lista">Clientes</a>
 	                                </li>
                                 </security:authorize>
                             </ul>
