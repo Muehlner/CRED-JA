@@ -39,7 +39,8 @@ public class Banco implements Serializable {
 	private List<Tabela> tabelas;
 
 	@OneToMany(mappedBy = "banco")
-	private List<Cliente> clientes;
+	@JsonBackReference
+	private List<Contrato> contratos;
 
 	public Integer getId() {
 		return id;
@@ -65,19 +66,19 @@ public class Banco implements Serializable {
 		this.tabelas = tabelas;
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
+	public List<Contrato> getContratos() {
+		return contratos;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((clientes == null) ? 0 : clientes.hashCode());
+		result = prime * result + ((contratos == null) ? 0 : contratos.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((tabelas == null) ? 0 : tabelas.hashCode());
@@ -93,10 +94,10 @@ public class Banco implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Banco other = (Banco) obj;
-		if (clientes == null) {
-			if (other.clientes != null)
+		if (contratos == null) {
+			if (other.contratos != null)
 				return false;
-		} else if (!clientes.equals(other.clientes))
+		} else if (!contratos.equals(other.contratos))
 			return false;
 		if (descricao == null) {
 			if (other.descricao != null)

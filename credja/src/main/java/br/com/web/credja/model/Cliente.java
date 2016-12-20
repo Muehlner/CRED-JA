@@ -42,10 +42,6 @@ public class Cliente implements Serializable {
 	private List<Contrato> contratos;
 
 	@ManyToOne
-	@JoinColumn(name = "banco_id")
-	private Banco banco;
-
-	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
@@ -125,7 +121,6 @@ public class Cliente implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
 		result = prime * result + ((contratos == null) ? 0 : contratos.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -147,11 +142,6 @@ public class Cliente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (banco == null) {
-			if (other.banco != null)
-				return false;
-		} else if (!banco.equals(other.banco))
-			return false;
 		if (contratos == null) {
 			if (other.contratos != null)
 				return false;

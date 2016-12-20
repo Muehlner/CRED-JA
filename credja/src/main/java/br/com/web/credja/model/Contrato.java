@@ -52,6 +52,10 @@ public class Contrato implements Serializable {
 	@OneToOne
 	private Orgao orgao;
 
+	@ManyToOne
+	@JoinColumn(name = "banco_id")
+	private Banco banco;
+
 	public Integer getId() {
 		return id;
 	}
@@ -156,10 +160,19 @@ public class Contrato implements Serializable {
 		this.orgao = orgao;
 	}
 
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((custoPortabilidade == null) ? 0 : custoPortabilidade.hashCode());
 		result = prime * result + ((dataCadastro == null) ? 0 : dataCadastro.hashCode());
@@ -185,6 +198,11 @@ public class Contrato implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Contrato other = (Contrato) obj;
+		if (banco == null) {
+			if (other.banco != null)
+				return false;
+		} else if (!banco.equals(other.banco))
+			return false;
 		if (cliente == null) {
 			if (other.cliente != null)
 				return false;
