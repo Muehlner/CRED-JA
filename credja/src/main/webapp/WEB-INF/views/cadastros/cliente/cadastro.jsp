@@ -38,7 +38,12 @@
 						<label>Nº Matricula</label>
 						<input class="form-control" name="numeroMatricula" placeholder="Digite o Nº da Matricula"/>
 					</div>
-									
+					
+					<div class="form-group">
+						<label>Telefone</label>
+						<input class="form-control" name="telefone" placeholder="(99) 99999-9999"/>
+					</div>
+							
 					<div class="form-group">
 						<button type="button" class="btn btn-default">Cancelar</button>
 			        	<button type="submit" class="btn btn-primary">Salvar</button>

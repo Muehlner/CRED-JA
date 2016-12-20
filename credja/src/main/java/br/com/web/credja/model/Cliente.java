@@ -11,9 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.br.CPF;
-
 @Entity
 public class Cliente implements Serializable {
 
@@ -25,10 +22,8 @@ public class Cliente implements Serializable {
 
 	private String nome;
 
-	@CPF(message = "CPF invalido")
 	private String cpf;
 
-	@Email(message = "E-mail invalido")
 	private String email;
 
 	private String numeroMatricula;

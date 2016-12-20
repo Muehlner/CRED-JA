@@ -18,7 +18,6 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void cadastrar(Cliente cliente) {
 		clienteDao.cadastrar(cliente);
-
 	}
 
 	@Override
@@ -39,6 +38,11 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente buscaPorId(Integer id) {
 		return clienteDao.buscaPorId(id);
+	}
+
+	@Override
+	public List<Cliente> listaPorFuncionario(Integer idFuncionario) {
+		return clienteDao.listaPorFuncionario(idFuncionario);
 	}
 
 }

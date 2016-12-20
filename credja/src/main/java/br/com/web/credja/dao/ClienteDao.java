@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.web.credja.model.Cliente;
-import br.com.web.credja.model.Observacao;
 
 @Repository
 public class ClienteDao {
@@ -17,11 +17,6 @@ public class ClienteDao {
 	private EntityManager manager;
 
 	public void cadastrar(Cliente cliente) {
-		
-		List<Observacao> observacoes = cliente.getObservacoes();
-		
-		manager.persist(observacoes);
-		
 		manager.persist(cliente);
 	}
 
@@ -42,6 +37,14 @@ public class ClienteDao {
 
 	public Cliente buscaPorId(Integer id) {
 		return manager.find(Cliente.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Cliente> listaPorFuncionario(Integer idUsuario) {
+		Query query = manager.createQuery("select c from Cliente c where c.usuario_id = :idUsuario");
+		query.setParameter("idUsuario", idUsuario);
+		List<Cliente> clientesDoFuncionario = query.getResultList();
+		return clientesDoFuncionario;
 	}
 
 }

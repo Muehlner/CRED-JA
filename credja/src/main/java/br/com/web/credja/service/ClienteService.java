@@ -15,4 +15,6 @@ public interface ClienteService {
 	public List<Cliente> lista();
 
 	public Cliente buscaPorId(Integer id);
+
+	public List<Cliente> listaPorFuncionario(Integer idFuncionario);
 }
