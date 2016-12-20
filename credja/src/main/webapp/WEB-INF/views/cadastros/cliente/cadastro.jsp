@@ -1,42 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>CREDJÁ</title>
-	</head>
+<%@ taglib tagdir="/WEB-INF/tags" 								prefix="mgTags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" 	prefix="security" %>
 
-	<body>
-		<h3>Cadastro de Cliente</h3>
-	
-		<form action="/cliente/cadastro" method="post">
+<mgTags:template bodyName="cadastroCliente">
+
+	<div id="page-wrapper">
+		<div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Cadastro de Cliente</h1>
+	        </div>
+        </div>
+        
+        
+		<div class="row">
+			<form action="/cliente/cadastra" method="post">
 			
-			<label for="nome">Nome:</label> 
-			<input type="text" id="nome" name="nome" />
-			
-			<label for="cpf">CPF:</label> 
-			<input type="text" id="cpf" name="cpf" />
-			
-			<label for="telefone">Telefone:</label> 
-			<input type="text" id="telefone" name="telefone" />
-			
-			<label for="email">E-mail:</label> 
-			<input type="text" id="email" name="email" />
-			
-			<label for="numeroMatricula">Nº Matricula:</label> 
-			<input type="text" id="numeroMatricula" name="numeroMatricula" />
-			
-			<label for="observacao">Observação:</label> 
-			<textarea rows="5" cols="100" id="observacao" name="observacoes.descricao" ></textarea>
-			<input type="submit" value="Adicionar Observação" />
-			
-			Atendimentos:
-			
-			
-			
-			<input type="submit" value="Cadastrar" />
+				<security:csrfInput/>
 				
-		</form>
-	</body>
-</html>
+				<div class="col-lg-6">
+				
+					<div class="form-group">
+						<label>Nome</label>
+						<input class="form-control" name="nome" placeholder="Digite o nome completo" />
+					</div>
+						
+					<div class="form-group">
+						<label>CPF</label>
+						<input class="form-control" name="cpf" placeholder="999.999.999-99"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Email</label>
+						<input class="form-control" name="email" placeholder="exemplo@teste.com.br"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Nº Matricula</label>
+						<input class="form-control" name="numeroMatricula" placeholder="Digite o Nº da Matricula"/>
+					</div>
+									
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancelar</button>
+			        	<button type="submit" class="btn btn-primary">Salvar</button>
+			        </div>
+				</div>	
+			</form>
+		</div>	
+	</div>
+</mgTags:template>	
