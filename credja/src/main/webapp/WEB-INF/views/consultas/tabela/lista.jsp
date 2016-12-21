@@ -27,13 +27,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row isHidden" id="rowTable">
 			<div class="col-lg-12">
 				<security:csrfInput/>
 				 <div class="panel panel-default">
 					<div class="panel-body">
 						<div class="table-responsive">
-							<table id="tabela" class="isHidden table table-hover">
+							<table id="tabela" class="table table-hover">
 					
 							</table>
 						</div>
@@ -77,7 +77,7 @@
 				dataType: 'json',
 				cache: false,
 				success: function (response) {
-					$('#tabela').removeClass('isHidden');
+					$('#rowTable').removeClass('isHidden');
 					
 					$('<thead><tr></tr></thead>').appendTo('#tabela').html(
 						'<tr>' +
