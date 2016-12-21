@@ -15,8 +15,8 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.web.credja.enums.StatusContrato;
 
@@ -60,9 +60,9 @@ public class Contrato implements Serializable {
 	private Orgao orgao;
 
 	@ManyToOne
-	@JoinColumn(name = "banco_id")
+	@JoinColumn(name = "coeficiente_id")
 	@JsonManagedReference
-	private Banco banco;
+	private Coeficiente coeficiente;
 
 	public Integer getId() {
 		return id;
@@ -168,20 +168,20 @@ public class Contrato implements Serializable {
 		this.orgao = orgao;
 	}
 
-	public Banco getBanco() {
-		return banco;
+	public Coeficiente getCoeficiente() {
+		return coeficiente;
 	}
 
-	public void setBanco(Banco banco) {
-		this.banco = banco;
+	public void setCoeficiente(Coeficiente coeficiente) {
+		this.coeficiente = coeficiente;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+		result = prime * result + ((coeficiente == null) ? 0 : coeficiente.hashCode());
 		result = prime * result + ((custoPortabilidade == null) ? 0 : custoPortabilidade.hashCode());
 		result = prime * result + ((dataCadastro == null) ? 0 : dataCadastro.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -206,15 +206,15 @@ public class Contrato implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Contrato other = (Contrato) obj;
-		if (banco == null) {
-			if (other.banco != null)
-				return false;
-		} else if (!banco.equals(other.banco))
-			return false;
 		if (cliente == null) {
 			if (other.cliente != null)
 				return false;
 		} else if (!cliente.equals(other.cliente))
+			return false;
+		if (coeficiente == null) {
+			if (other.coeficiente != null)
+				return false;
+		} else if (!coeficiente.equals(other.coeficiente))
 			return false;
 		if (custoPortabilidade == null) {
 			if (other.custoPortabilidade != null)

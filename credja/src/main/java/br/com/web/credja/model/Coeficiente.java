@@ -3,6 +3,7 @@ package br.com.web.credja.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -40,6 +43,10 @@ public class Coeficiente implements Serializable {
 	private Tabela tabela;
 
 	private Integer prazo;
+
+	@OneToMany(mappedBy = "coeficiente")
+	@JsonBackReference
+	private List<Contrato> contratos;
 
 	public Integer getId() {
 		return id;
@@ -81,10 +88,19 @@ public class Coeficiente implements Serializable {
 		this.prazo = prazo;
 	}
 
+	public List<Contrato> getContratos() {
+		return contratos;
+	}
+
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((contratos == null) ? 0 : contratos.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((prazo == null) ? 0 : prazo.hashCode());
@@ -102,6 +118,11 @@ public class Coeficiente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Coeficiente other = (Coeficiente) obj;
+		if (contratos == null) {
+			if (other.contratos != null)
+				return false;
+		} else if (!contratos.equals(other.contratos))
+			return false;
 		if (data == null) {
 			if (other.data != null)
 				return false;

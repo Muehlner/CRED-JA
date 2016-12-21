@@ -14,16 +14,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuario.findAll", query = "select u from Usuario u") })
 public class Usuario implements UserDetails, Serializable {
@@ -63,6 +66,7 @@ public class Usuario implements UserDetails, Serializable {
 	private List<Role> roles;
 
 	@OneToMany(mappedBy = "usuario")
+	@JsonBackReference
 	private List<Cliente> clientes;
 
 	public Integer getId() {

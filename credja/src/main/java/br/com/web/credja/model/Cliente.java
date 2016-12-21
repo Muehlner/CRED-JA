@@ -11,6 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 @Entity
 public class Cliente implements Serializable {
 
@@ -31,12 +39,15 @@ public class Cliente implements Serializable {
 	private String telefone;
 
 	@OneToMany(mappedBy = "cliente")
+	@JsonBackReference
 	private List<Observacao> observacoes;
 
 	@OneToMany(mappedBy = "cliente")
+	@JsonBackReference
 	private List<Contrato> contratos;
 
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 

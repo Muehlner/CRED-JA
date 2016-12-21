@@ -12,6 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 @Entity
 public class Observacao implements Serializable {
 
@@ -27,6 +34,7 @@ public class Observacao implements Serializable {
 	private Calendar dataCriacao;
 
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
