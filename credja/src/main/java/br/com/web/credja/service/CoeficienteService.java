@@ -15,4 +15,6 @@ public interface CoeficienteService {
 	public List<Coeficiente> lista();
 
 	public Coeficiente buscaPorId(Integer id);
+
+	public List<Coeficiente> buscaPorIdTabela(Integer idTabela);
 }

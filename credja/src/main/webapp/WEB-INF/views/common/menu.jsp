@@ -63,7 +63,7 @@
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">
 	                                <li>
-	                                    <a href="typography.html">Coeficientes</a>
+	                                    <a href="/coeficiente/lista">Coeficientes</a>
 	                                </li>
                                 </security:authorize>
                                 <security:authorize access="hasRole('ROLE_ADMINISTRADOR')">

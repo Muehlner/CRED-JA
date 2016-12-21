@@ -40,4 +40,9 @@ public class CoeficienteServiceImpl implements CoeficienteService {
 		return coeficienteDao.buscaPorId(id);
 	}
 
+	@Override
+	public List<Coeficiente> buscaPorIdTabela(Integer idTabela) {
+		return coeficienteDao.buscaPorIdTabela(idTabela);
+	}
+
 }

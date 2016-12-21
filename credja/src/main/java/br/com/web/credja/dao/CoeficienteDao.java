@@ -37,4 +37,12 @@ public class CoeficienteDao {
 	public Coeficiente buscaPorId(Integer id) {
 		return manager.find(Coeficiente.class, id);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Coeficiente> buscaPorIdTabela(Integer idTabela) {
+		List<Coeficiente> coeficientes = manager
+				.createQuery("select c from Coeficiente c where c.tabela.id = :idTabela")
+				.setParameter("idTabela", idTabela).getResultList();
+		return coeficientes;
+	}
 }
