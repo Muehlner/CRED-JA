@@ -72,19 +72,17 @@
 				cache: false,
 				success: function (response) {
 					$('#tabela').removeClass('isHidden');
-					 
+					
+					$('<thead><tr></tr></thead>').appendTo('#tabela').html(
+						'<tr>' +
+					    	'<th>Nome</th>' +
+					      	'<th style="text-align: center">Remover</th>' +
+					      	'<th style="text-align: center">Alterar</th>' +
+						'</tr>'	
+					);		
+					
 					$.each(response, function(i, element){
-	            		$('#tabela').appendTo('#tabela').html(
-	            					'<thead>' +
-			                          	'<tr>' +
-			                            	'<th>Nome</th>' +
-			                              	'<th style="text-align: center">Remover</th>' +
-			                              	'<th style="text-align: center">Alterar</th>' +
-			                        	'</tr>' +
-			                    	'</thead>' +
-	            					
-			                    	'<tbody><tr>' +
-		            					
+	            		$('<tbody><tr></tr></tbody>').appendTo('#tabela').html(
 	            						'<td>' + 
 		            						element.descricao + 
 		            					'</td>' +
@@ -99,9 +97,7 @@
 	                                		'<a href="../tabela/mostra?id='+ element.id+ '">' +	
 	                                			'<span class="glyphicon glyphicon-edit text-success"></span>' + 
 	                                		'</a>' +
-	                                	'</td>' +
-	                                	
-                                	'</tr></tbody>'
+	                                	'</td>'
 						);
 
 	            	 });
