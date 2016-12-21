@@ -13,6 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 @Entity
 public class Coeficiente implements Serializable {
 
@@ -29,6 +36,7 @@ public class Coeficiente implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "tabela_id")
+	@JsonManagedReference
 	private Tabela tabela;
 
 	private Integer prazo;

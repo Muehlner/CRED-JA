@@ -13,8 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import br.com.web.credja.enums.StatusContrato;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_NULL)
 @Entity
 public class Contrato implements Serializable {
 
@@ -54,6 +61,7 @@ public class Contrato implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "banco_id")
+	@JsonManagedReference
 	private Banco banco;
 
 	public Integer getId() {

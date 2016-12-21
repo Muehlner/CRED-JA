@@ -10,10 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -30,8 +28,6 @@ public class Tabela implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull
-	@NotBlank
 	private String descricao;
 
 	@ManyToOne
@@ -40,6 +36,7 @@ public class Tabela implements Serializable {
 	private Banco banco;
 
 	@OneToMany(mappedBy = "tabela")
+	@JsonBackReference
 	private List<Coeficiente> coeficientes;
 
 	public Integer getId() {
