@@ -23,6 +23,6 @@ public class ContratoController extends AbstractController {
 
 	@RequestMapping(value = { "/cadastra" })
 	public ModelAndView cadastro(ContratoDTO contratoDTO) {
-		return null;
+		return this.redirect("lista");
 	}
 }
