@@ -15,7 +15,7 @@
             	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalContrato">Simular</button>
             </div>
 		</div>
-		<div class="panel-body">
+
 		<!-- Modal Contrato -->
 		<div class="modal fade" id="modalContrato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -37,8 +37,7 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal Contrato -->
-		</div>
-		<!-- .panel-body -->
+
 	</div>
 	
 	<!-- jQuery -->
