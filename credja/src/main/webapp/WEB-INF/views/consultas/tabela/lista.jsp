@@ -30,9 +30,15 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<security:csrfInput/>
-				<table id="tabela" class="isHidden table table-hover">
-				
-				</table>
+				 <div class="panel panel-default">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table id="tabela" class="isHidden table table-hover">
+					
+							</table>
+						</div>
+					</div>
+				</div>			
 			</div>
 		</div>	
 	</div>
