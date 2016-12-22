@@ -14,7 +14,7 @@
             </div>    
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<div class="form-group">
 					<label>Banco</label>
 					<form:select path="bancos" name="idBanco" class="selectBanco form-control" >
