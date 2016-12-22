@@ -2,6 +2,7 @@ package br.com.web.credja.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.web.credja.dao.ContratoDao;
@@ -11,6 +12,7 @@ import br.com.web.credja.service.ContratoService;
 @Service
 public class ContratoServiceImpl implements ContratoService {
 
+	@Autowired
 	private ContratoDao contratoDao;
 
 	@Override
