@@ -22,7 +22,7 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div>Contratos Pagos</div>
+                                    <div>Pagos</div>
                                     <div class="huge">12</div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div>Contratos em negociação</div>
+                                    <div>Em negociação</div>
                                     <div class="huge">26</div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                     <i class="fa fa-calendar fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div>Contratos em analise</div>
+                                    <div>Em analise</div>
                                     <div class="huge">124</div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                     <i class="fa fa-remove fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div>Contratos Cancelados</div>
+                                    <div>Cancelados</div>
                                     <div class="huge">13</div>
                                 </div>
                             </div>

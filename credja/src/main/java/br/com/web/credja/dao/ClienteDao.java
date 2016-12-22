@@ -41,7 +41,7 @@ public class ClienteDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Cliente> listaPorFuncionario(Integer idUsuario) {
-		Query query = manager.createQuery("select c from Cliente c where c.usuario_id = :idUsuario");
+		Query query = manager.createQuery("select c from Cliente c where c.usuario.id = :idUsuario");
 		query.setParameter("idUsuario", idUsuario);
 		List<Cliente> clientesDoFuncionario = query.getResultList();
 		return clientesDoFuncionario;
